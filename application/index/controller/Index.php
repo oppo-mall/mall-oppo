@@ -1,19 +1,49 @@
 <?php
 namespace app\index\controller;
+use think\Controller;
 use think\Request;
-class Index
+use app\index\model\User;
+
+class Index extends Controller
 {
-public function index(Request $request)
-{
-	echo '请求方法：' . $request->method() . '<br/>';
-	echo '资源类型：' . $request->type() . '<br/>';
-	echo '访问IP：' . $request->ip() . '<br/>';
-	echo '是否AJax请求：' . var_export($request->isAjax(), true) . '<br/>';
-	echo '请求参数：';
-	dump($request->param());
-	echo '请求参数：仅包含name';
-	dump($request->only(['name']));
-	echo '请求参数：排除name';
-	dump($request->except(['name']));
+	protected $user;
+
+	public function _initialize()
+	{
+		parent::_initialize();
+		$this->user = new User();
 	}
+	public function index()
+	{
+		return $this->fetch();
+	}
+	public function log()
+	{
+
+	}
+	//登录
+	public function dolog()
+	{
+		//防止get注入
+		if (Request::instance()->isGet()){
+			return $this->fetch('log');
+		}
+
+		//限定传入类型
+		if (Request::instance()->isPost()){
+
+			$post = Request::instance()->param(); 
+			$name = $post['username'];
+			$password = $post['password'];
+			//查询用户信息
+			$userinfo = $this->user->checkAll($name);
+			if ($userinfo['password'] == md5($password)) {
+				$this->success('登录成功','Index/index');
+			} else {
+				$this->error('登录失败');
+			}
+
+		}
+	}
+
 }
