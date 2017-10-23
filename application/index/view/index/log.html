@@ -1,13 +1,10 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=8" />
-
     <title>『OPPO帐号』-登录</title>
-    <meta name="keywords" content=" OPPO帐号,登录,注册,找回密码,OPPO账号,OPPO会员" />
-    <meta name="description" content="登录OPPO帐号，可以在OPPO官网、社区、软件商店、游戏中心、主题商店等享受更多功能服务。 " />
-    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="__CSS__common.css" />
         <style>
             input:-webkit-autofill+label{display:none;}
             input:-moz-autofill+label{display:none;}
@@ -29,7 +26,6 @@
                  <ul class="menu_sec">
                     <li><a href="http://www.oppo.com">OPPO官网</a></li>
                     <li><a href="http://www.oppo.cn/">OPPO社区</a></li>
-                    <li><a href="http://www.coloros.com/">ColorOS</a></li>
                     <div class="clear"></div>
                 </ul>
                 <div class="clear"></div>
@@ -46,19 +42,21 @@
                     <h3 class="title">登录OPPO帐号可享受更多的服务</h3>
                 </div>
                 <!--主体登录框-->
+                <form action="/index/index/dolog" method="post">
                 <div class="login_area">
                     <div class="login_form" >
-                        <div class="input_area">
-                            <input type="text"  id="username" name="username" autocomplete="off"  class="username" />
-                            <label class="placeholder" for="username">请输入手机号码/邮箱/用户名</label>
-                        </div>
-                        <div class="error_tip" id="info_username"></div>
+                       <div class="input_area">
+                <input type="text"  id="username" name="username" autocomplete="off"  class="username" placeholder="请输入手机号码/邮箱/用户名"/>
+            
+                </div>
+                <div class="text-danger" id="userId" style="text-align: center; color:red"></div>
+                <div  class="text-danger" id="userIdT" style="text-align: center; color:green"></div>
 
 
-                        <div class="input_area">
-                            <input type="password"  id="pwd"  autocomplete="off"  class="pwd"/>
-                            <label class="placeholder" for="pwd">请输入帐号密码</label>
-                        </div>
+                <div class="error_tip" id="info_username"></div>
+                <div class="input_area">
+                    <input type="password"  id="pwd"  autocomplete="off"  class="pwd" placeholder="请输入帐号密码" />
+                </div>
                         <div class="error_tip" id="info_pwd"></div>
 
                         <div id="captcha_area">
@@ -71,8 +69,9 @@
                             <div class="clear"></div>
 
                         </div>
-                        <input type="submit" class="button login_button mt30" id="loginBtn" value="登录" onclick="check_login();"  style="margin-bottom:15px;" />
-                        <input type="button" class="button register_button oppo-tj" id="registerBtn" value="注册OPPO帐号"  link = "/register/sms;JSESSIONID=fa212c7e-fb35-4886-b060-bf2170386aa2?type=1"  data-tj="account|link|register|register"/>
+                        <input type="submit" class="button login_button mt30"  value="登录" style="margin-bottom:15px;" />
+                        <input type="button" class="button register_button oppo-tj" id="registerBtn" value="注册OPPO帐号"  link = "/index/index/reg"  data-tj=""/>
+                        </form>
 
                         <div class="error_tip1" style="margin-top:10px;" id="info_login_form"></div>
 
@@ -92,7 +91,7 @@
             </div>
 
             <div class="footer_info">
-                <p>© 2005 - 2017 东莞市永盛通信科技有限公司 版权所有 粤ICP备08130115号-1</p>
+                <p>mall</p>
             </div>
         </div>
     </div>
@@ -264,7 +263,7 @@
 <input type="hidden" value="" id="needCaptcha"/>
 <input type="hidden" value='' id="getCaptchaJs"/>
 <input type="hidden" value='' id="captchaResult"/>
-<input type="hidden" value="/login;JSESSIONID=fa212c7e-fb35-4886-b060-bf2170386aa2?type=1" id="loginUrl"/>
+<input type="hidden" value="/index/index/dolog" id="loginUrl"/>
 <input type="hidden" value="/captcha;JSESSIONID=fa212c7e-fb35-4886-b060-bf2170386aa2" id="captchaUrl"/>
 <input type="hidden" value="/account/profile;JSESSIONID=fa212c7e-fb35-4886-b060-bf2170386aa2?type=1" id="profileUrl"/>
 
@@ -274,10 +273,37 @@
 <input type="hidden" id="dlg_id"/>
 <div class="mask" id="mask"></div>
 
-<script type="text/javascript" src=""></script>
-<script type="text/javascript" src=""></script>
-<script src="js/jquery-1.9.1.min.js" ></script>
-<script src="js/jquery-md5-min.js" ></script>
-<script src="js/login.js" ></script>
+<script src="__JS__jquery-1.9.1.min.js" ></script>
+<script src="__JS__jquery-md5-min.js" ></script>
+<script src="__JS__login.js" ></script>
+
+<script>
+    $('#username').blur(function() {
+        $('#userIdT').html("");
+        $('#userId').html("");
+        var username = $('#username').val();
+        if (username.length > 15) {
+            $('#userId').html('用户名过长')
+        };
+        if (username.length !=0 ){
+            $.ajax({
+                url: '/index/ajax/user',
+                type: 'POST',
+                dataType: 'json',
+                async : false,
+                data: {param:username},
+                success:success
+            });
+            function success(data){
+                if (data.status == 0) {
+                    $('#userIdT').html(data.msg);
+                }
+                if (data.status == 1) {
+                   $('#userId').html(data.msg);
+                }
+            }
+        }
+    });
+</script>
 </body>
 </html>

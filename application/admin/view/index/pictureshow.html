@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link href="__ADMIN__static/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__static/h-ui.admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script><![endif]-->
+<style type="text/css">
+		.tmd {
+			width:100%;
+			height:100%;
+			background-color: gray;
+			position:absolute;
+			top:0px;
+			left:0px;
+			opacity:0.5;
+		}
+		.show {
+			width:1000px;
+			right: 400px;
+			position:relative;
+			/*background-color: red;*/
+		}
+</style>
+<link href="__ADMIN__lib/lightbox2/2.8.1/css/lightbox.css" rel="stylesheet" type="text/css" >
+
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页
+	<span class="c-gray en">&gt;</span>
+	图片管理
+	<span class="c-gray en">&gt;</span>
+	图片展示
+	<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+<div class="pd-20">
+	<div class="cl pd-5 bg-1 bk-gray mt-20">
+		<span class="l">
+		<a href="javascript:;" onclick="edit()" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe6df;</i> 查看</a>
+		</span>
+	</div>
+	<div class="portfolio-content">
+		<ul class="cl portfolio-area">
+			{volist name="list" id="vo"}
+			<li class="item">
+				<div class="portfoliobox">
+					<input class="checkbox" name="" type="checkbox" value="">
+					<div class="picbox" width="800px" height="400px">
+						<img src="{$vo.path}" id="big">
+					</div>
+					<div class="textbox"> </div>
+				</div>
+			</li>
+			{/volist}
+		</ul>
+	</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__static/h-ui.admin/js/H-ui.admin.page.js"></script>
+<!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="lib/lightbox2/2.8.1/js/lightbox.min.js"></script>
+
+<script type="text/javascript">
+	var oImage = document.getElementsByTagName('img');
+	for (var i=0; i<oImage.length; i++) {
+
+		oImage[i].onclick = function () {
+			//中间层透明div
+			var oDiv = document.createElement('div');
+			oDiv.className='tmd';
+			document.body.appendChild(oDiv);
+
+			//显示图片div
+			var oShowDiv = document.createElement('div');
+			oShowDiv.className = 'show';
+
+			oShowDiv.style.left = (document.documentElement.clientWidth - 400) / 2 + 'px';
+
+			document.body.appendChild(oShowDiv);
+
+			//创建img标签
+			var oImg = document.createElement('img');
+			oImg.src=this.src;
+			oImg.width = 1000;
+			oImg.style.position = 'relative';
+			oShowDiv.appendChild(oImg);
+
+			oDiv.onclick = function () {
+				var oTmDiv = document.getElementsByClassName('tmd');
+				var oShow = document.getElementsByClassName('show');
+				document.body.removeChild(oTmDiv[0]);
+				document.body.removeChild(oShow[0]);
+			}
+		}
+	}
+</script>
