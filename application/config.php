@@ -146,7 +146,8 @@ return [
         '__JS__' => '/static/index/js/',
         '__IMG__' => '/static/index/images/',
         '__PICTURE__'=>'/static/index/picture/',
-        '__ADMIN__'=>'/static/admin/'
+        '__ADMIN__'=>'/static/admin/',
+        '__APATH__'=>'mall.app'
     ],
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',

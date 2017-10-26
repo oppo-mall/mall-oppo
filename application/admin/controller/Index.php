@@ -5,6 +5,7 @@ use think\Session;
 use app\admin\model\User; 
 use app\admin\model\Adv;
 use think\Request;
+use app\admin\Head;
 class Index extends Controller
 {
 	protected $user;
@@ -12,33 +13,36 @@ class Index extends Controller
     protected $userinfo;
     protected $picPath;
     protected $manypath=[];
+
 	public function _initialize()
 	{
 		parent::_initialize();
 		$this->user = new User();
         $this->adv = new Adv();
+        $this->head = new Head();
+        
 	}
-    protected function head()
-    {	
-    	if(!Session::has('uid','admin')){
-    		//返回重新登录
-    		$this->redirect('Index/index/index');
+    // protected function head()
+    // {	
+    // 	if(!Session::has('uid','admin')){
+    // 		//返回重新登录
+    // 		$this->redirect('Index/index/index');
 
-    	};
-    	$uid = Session::get('uid','admin');
-    	$userobj = $this->user->checkId($uid);
-    	$udertype = $userobj->udertype;
-    	$update_time = $userobj->update_time;
+    // 	};
+    // 	$uid = Session::get('uid','admin');
+    // 	$userobj = $this->user->checkId($uid);
+    // 	$udertype = $userobj->udertype;
+    // 	$update_time = $userobj->update_time;
 
-    	$userinfo = $this->user->checkAll($uid);
-        $userinfo['udertype'] = $udertype;
-        $userinfo['update_time'] = $update_time;
-        $this->userinfo = $userinfo;
+    // 	$userinfo = $this->user->checkAll($uid);
+    //     $userinfo['udertype'] = $udertype;
+    //     $userinfo['update_time'] = $update_time;
+    //     $this->userinfo = $userinfo;
 
-    	foreach ($userinfo as $key => $value) {
-    		$this->assign($key,$value);
-    	}
-    }
+    // 	foreach ($userinfo as $key => $value) {
+    // 	$this->assign($key,$value);
+    // 	}
+    // }
 
     public function logout()
     {
@@ -48,7 +52,7 @@ class Index extends Controller
         $this->redirect('Index/index/index');
     }
     public function index(){
-        $this->head();
+        $this->head->head();
         $info = array(
         '操作系统'=>PHP_OS,
         '运行环境'=>$_SERVER["SERVER_SOFTWARE"],
@@ -70,8 +74,17 @@ class Index extends Controller
 
     public function advpicturelist()
     {
-        $this->head();
-        $list = $this->adv->bo();
+        $this->head->head();
+        $info = Request::instance()->param();
+        $bid = $info['bid'];
+        $list = $this->adv->bo($bid);
+        foreach ($list as $key => $value) {
+            if ( !is_null(json_decode($value['path']))) {
+                $list[$key]['path'] = json_decode($value['path'])->url1;
+
+            }
+        }
+        $this->assign('bid',$bid);
         $this->assign('list',$list);
         return $this->fetch();    
     }
@@ -81,7 +94,7 @@ class Index extends Controller
     {
         $file = $this->request->file();
         // 移动到框架应用根目录/public/uploads/ 目录下
-        $info = $file['file']->move('public' . DS . 'uploads'); 
+        $info = $file['file']->move('uploads'); 
         if($info){
              $path ='/' . $info->getPathname();
              $this->picPath = $path;
@@ -101,23 +114,40 @@ class Index extends Controller
     }
     public function pictureadd()
     {
-        $this->head();
-        $this->view->engine->layout(false);
+         $this->view->engine->layout(false);
+         $param =  Request::instance()->param();
+         //dump($param);
+         $this->assign('param',$param);
         return $this->fetch();
     }
     public function addbo()
     {   
+
+        $picinfo = Request::instance()->param();
         $this->addpic();
-        
-        array_push($this->manypath , $this->picPath);
     }
     public function add()
     {
         $this->view->engine->layout(false);
-        $info = Request::instance()->param();
-        dump($this->manypath);
-        dump($info);
-    } 
+        $info = Request::instance()->param(); 
 
+        $id = Adv::get($info['id']); 
+        $bid = $id->bid;
+        $res = $this->adv->uppic($info);
+        $this->redirect('admin/index/advpicturelist/bid/'.$bid);
+    } 
+    public function delpic()
+    {
+        $data = Request::instance()->param();
+        dump($data);
+        $id=$data['id'];
+        $del = $this->adv->delpicture($id);
+        dump($del);
+        if ($del) {
+            echo json_encode(['status'=>'0']);
+        } else {
+            echo json_encode(['status'=>'1']);
+        }
+    }
 
 }

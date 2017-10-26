@@ -1,0 +1,246 @@
+<header class='main-header'>
+  <div class='upper-area'>
+    <div class='wrapper g'>
+                  <ul class='gi log-area'>
+  {if session('?name')}
+  <li class='gi' >
+    <a href=''>
+      <span class='text'>我的OPPO</span>
+      <span class='icon icon-messages'></span>
+      <span class='n-messages'>()</span>
+    </a>
+  </li>
+
+  <li class='gi' >
+    <a class='logout ' href='/user/user/logout'>退出</a>
+  </li>
+  {else}
+    <li class='gi hasLogout' data-desktop='.upper-area .log-area' data-mobile='.mobile-tools .log-area'>
+      <a class='' href='/user/user/log'>
+        登录
+      </a>
+    </li>
+  <li class='gi hasLogout' data-desktop='.upper-area .log-area' data-mobile='.mobile-tools .log-area'>
+    <a class='sso-register' href='/user/user/reg'>
+      注册
+    </a>
+  </li>
+  {/if}
+  <!-- <li class='gi' data-desktop='.upper-area .log-area' data-mobile='.mobile-tools .log-area' id='old-version-link'>
+  </li> -->
+</ul>      <ul class='gi menu-lang'>
+  <li class='gi gi-language' data-desktop='.menu-lang' data-mobile='.main-menu nav .nav-ul-view > ul'>
+    <a class='lang-link js-toggle-close' href='#'>Global</a>
+    <div class='languages js-content' data-desktop='.gi-language' data-mobile='.languages-panel'>
+      <div class='wrapper'>
+        <h3 class='h-epsilon'>Select your country or region</h3>
+        <ul>
+          <li>
+          <a  href='http://www.oppo.com/dz/'>Algérie</a>
+          </li>
+          <li>
+          <a  href='http://www.oppo.com/au/'>Australia</a>
+          </li>
+          <li>
+          <a  href='http://www.oppo.com/bd/'>Bangladesh</a>
+          </li>
+          <li>
+          <a  href='http://www.oppo.com/eg/'>Egypt</a>
+          </li>
+          <li>
+          <a href='http://www.oppo.com/en/'>Global</a>
+          </li>
+          <li>
+          <a  href='http://www.oppo.com/in/'>India</a>
+          </li>
+          <li>
+          <a  href='http://www.oppo.com/id/'>Indonesia</a>
+          </li>
+          <li>
+          <a  href='http://www.oppo.com/ke/'>Kenya</a>
+          </li>
+          <li>
+          <a  href='http://www.oppo.com/my/'>Malaysia</a>
+          </li>
+          <li>
+          <a  href='http://www.oppo.com/ma/'>Maroc</a>
+          </li>
+          <!-- <li>
+          <a  href='http://www.oppo.com/mx/'>México</a>
+          </li> -->
+          <!-- <li>
+          <a  href='http://www.oppo.com/ng/'>Nigeria</a>
+          </li> -->
+          <li>
+          <a  href='http://www.oppo.com/pk/'>Pakistan</a>
+          </li>
+          <li>
+          <a  href='http://www.oppo.com/ph/'>Philippines</a>
+          </li>
+          <li>
+          <a  href='http://www.oppo.com/sg/'>Singapore</a>
+          </li>
+          <li>
+          <a  href='http://www.oppo.com/lk/'>Sri Lanka</a>
+          </li>
+          <li>
+          <a  href='http://www.oppo.com/tw/'>台灣</a>
+          </li>
+          <li>
+          <a  href='http://www.oppo.com/ae/'>UAE</a>
+          </li>
+          <li>
+          <a  href='http://www.oppomobile.vn/'>Việt Nam</a>
+          </li>
+          <li>
+          <a  href='http://www.oppo.com/th/'>ประเทศไทย</a>
+          </li>
+          <li>
+          <a  href='http://www.oppo.com/mm/'>Myanmar</a>
+          </li>
+          <li>
+          <a  class='current'  href='http://www.oppo.com/cn/'>中国</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </li>
+</ul>    </div>
+  </div>
+  <div class='bottom-area'>
+    <div class='wrapper'>
+      <a class='js-open-menu' href='#'>
+        <i class='js-open-menu-bar'></i>
+      </a>
+<div class="shop-cart hidden" id="div">
+  <a href="/index/shop/car">
+        <span class="icon icon-cart"></span>
+    <span class="n-item-cart cart_number" id="shopping-count">3</span>
+  </a>
+</div>
+      <div class='logo logo-extend'>
+        <a href='' class="oppo-tj" data-tj="www|a|logo|home">
+                          <h1>
+                  <img src="__PICTURE__log.svg" alt="OPPO">
+                  </h1>
+                </a>
+              </div>
+      <a class='js-open-user' href='#'>
+        <img src="__PICTURE__icon-menu-user.png" alt="">
+      </a>
+      <div class='main-menu'>
+                <div class='search'></div>
+        <nav>
+  <div class='nav-ul-view'>
+  <ul class='menu g' id="n">
+    <li class='gi
+        is-active
+        '>
+      <a class='m-item' href='/index/index/index'>
+        <span>首页</span>
+      </a>
+    </li>
+    <li class='gi
+        '>
+      <a class='m-item' href='/index/product/products'>
+        <span>产品</span>
+      </a>
+    </li>
+                                <li class='gi'>
+      <a class='m-item' id='storeLink' href='/index/shop/shop' >
+        <span>商城</span>
+              </a>
+          </li>
+    <li class='gi
+        '>
+      <a class='m-item' href=''>
+        <span>体验店</span>
+      </a>
+    </li>
+    <li class='gi
+        '>
+      <a class='m-item' href=''>
+        <span>服务</span>
+              </a>
+    </li>
+       
+    <li class='gi'>
+      <a class='m-item  oppo-tj' href='/index/bbs/bbs' target="_blank">
+        社区
+      </a>
+    </li>
+  </ul>
+  </div>
+</nav>      </div>
+      <div class='user-menu'>
+<div class='relative'>
+  <ul >
+    <li class='user-menu-login'>
+      <a href="">我的订单</a>
+    </li>
+    <li class='user-menu-login'>
+      <a href="">配送地址</a>
+    </li>
+    <li class='user-menu-login'>
+      <a href="">优惠券</a>
+    </li>
+    <li class='user-menu-login user-menu-message'>
+      <a href="">账户信息</a>
+    </li>
+    <li class='user-menu-login user-menu-cart'>
+      <a href="">购物车</a>
+    </li>
+    <li class='user-menu-login user-menu-toLogin'>
+      <a class='sso-login' href='javascript:void(0)'>
+        登录
+      </a>
+    </li>
+    <li class='user-menu-logout'>
+      <a class='sso-logout' href='javascript:void(0)'>退出</a>
+    </li>
+  </ul>
+</div>
+</div>    </div>
+  </div>
+  <div class='nav-sub-menu'>
+  <div class='relative'></div>
+</div>
+<div class='nav-search-mask'></div>
+<div class='nav-search'>
+  <div class='nav-search-container'>
+    <div class='nav-search-content'>
+      <div class='nav-search-input'>
+        <form action='' class='main-form'>
+          <input placeholder='搜索OPPO商品' type='text' name="q">
+          <button class='button' type='submit'>搜索</button>
+          <a href='#' class='nav-search-close'>取消</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>  <div class="languages-panel"></div>
+</header>
+<script type="text/javascript">
+  window.onload = function () {
+    var Ul = document.getElementById('n');
+    var div = document.getElementById('div');
+   
+    var test = window.location.href;
+    //alert(test);
+    var methods = test.split('/');
+    var method = methods.pop();
+    
+    if (method == 'products') {
+     Ul.children[0].className = 'gi';
+     Ul.children[1].className = 'gi is-active';
+    } else if (method == 'shop') {
+     Ul.children[0].className = 'gi';
+     Ul.children[2].className = 'gi is-active';
+     div.className = 'shop-cart';
+    } else if (method == 'service') {
+     Ul.children[0].className = 'gi';
+     Ul.children[4].className = 'gi is-active';
+    }
+  };
+
+</script>

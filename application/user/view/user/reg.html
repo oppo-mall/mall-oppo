@@ -1,0 +1,113 @@
+<!DOCTYPE html >
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />    
+    <title>『OPPO帐号』-注册</title>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+    <link rel="stylesheet" href="__CSS__common.css?r=20170503" />
+   
+   
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">  
+        <div class="w960">    
+             <ul class="menu_sec">
+                <li><a href="">OPPO官网</a></li>
+                <li><a href="">OPPO社区</a></li>
+                <div class="clear"></div>
+            </ul>   
+            <div class="clear"></div> 
+        </div>
+    </div>
+
+    <div class="register_area">       
+
+        <div class="register_title">注册OPPO帐号</div>
+        <!--主体注册框-->
+        <form  class="register_form" id="sms_form" action="/index/index/doreg" method="post" >
+             <div class="input_area">
+                <input type="text"  id="username" name="username" autocomplete="off"  class="username" placeholder="请输入手机号码/邮箱/用户名"/>
+                <span id="users"></span>
+                <br/>
+                <input type="text"  id="yzm"  class="username " style="display: none" placeholder="请输入短信验证码" />
+            </div>
+            <div class="error_tip" id="info_username"></div>
+            <div class="input_area">
+                <input type="password" name='pwd'  id="pwd"  autocomplete="off"  class="pwd" placeholder="请输入帐号密码" />
+                <span id="psd"></span>
+            </div>
+            
+            <div class="field">
+                <div class="fl">
+                    <label id="forCheckBox" class="checkBoxLabel "></label>
+                   <!--  <input type="checkbox" id="isaccept"  name="accept"/> -->
+                    <label id="checkBoxLabel1">已阅读并同意<a class="agree_link" href="http://uc.oppomobile.com/usercenter/document/340/register_simple.html" target="_blank">《OPPO帐号注册协议》</a></label>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="error_tip" id="info_accept"></div>
+
+            <input type="submit" class="button login_button" id="smsBtn" value="立即注册" style="margin-top:22px" />
+            <div class="error_tip1" id="info_sms_form"></div>
+            <input type="hidden" id="errorCode" value=""/>
+            <input type="hidden" id="errorMsg" value=""/>
+            <input type="hidden" id="source" name="source"   value=""/>
+            <input type="hidden" id="type" name="type" value="1" />
+            <input type="hidden" id="style" name="style" value="2" />
+        </form>
+    </div>
+    <div class="footer_info">
+         <p>© 2005 - 2017 东莞市永盛通信科技有限公司 版权所有 粤ICP备08130115号-1</p>
+     </div>
+</div>
+
+
+<input type="hidden" value="/captcha" id="captchaUrl"/>
+<input type="hidden" value='' id="getCaptchaJs"/>
+<input type="hidden" value='' id="captchaResult"/>
+<script src="__JS__jquery-1.9.1.min.js"></script>
+<!-- <script src="__JS__register.js?r=20170503" ></script> -->
+
+<script>
+    var yzm = document.getElementById('yzm');
+    var phoneReg = /^1[3|4|5|8|7][0-9]\d{4,8}$/;
+   /* var emailReg = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
+    var userReg = //;*/
+   /* var check = document.getElementById('forCheckBox');
+    $('#forCheckBox').click(function () {
+         $('#forCheckBox').className = 'checkBoxLabel choosed'
+    })
+*/
+
+    $('#username').blur(function() {
+        $('#users').html("");
+        $('#psd').html("");
+        var username = $('#username').val();
+        
+        
+        /*if (username.length > 15) {
+            $('#users').html('用户名过长')
+        };*/
+        if (username.length !=0 ){
+            $.ajax({
+                url: '/index/ajax/register',
+                type: 'POST',
+                dataType: 'json',
+                async : false,
+                data: {param:username},
+                success:success
+            });
+            function success(data){
+                if (data.status == 0) {
+                    $('#users').html('用户名已被注册');
+                }
+                
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+
+<html class='no-js'>
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EDGE" />
+  <meta content='width=device-width,initial-scale=1, user-scalable=no' name='viewport'>
+  <title>『OPPO产品中心』OPPO最新手机报价_图片_机型-OPPO智能手机官网 </title>
+ 
+  <meta property="qc:admins" content="1257363774670076375" />
+  <meta name="baidu-site-verification" content="oOoWSh1xnd" />
+
+  <link media="all" type="text/css" rel="stylesheet" href="__CSS__styles.css">
+</head>
+
+<body>
+  {include file="/index/header" /}
+<main class='main-content'>
+  <div class="product-index">
+  	<div class='wrapper'>
+    <ul class='breadcrumb'>
+      <li>
+        <a href='//www.oppo.com/cn'>
+          首页
+          <span>/</span>
+        </a>
+      </li>
+      <li>产品</li>
+   </ul>
+    </div>
+    <div class="main-flagship">
+  		<div class="wrapper">
+        	<div class="pull-left">
+          	<a class="left-up hover-box oppo-tj"  href="" target="_blank">
+    					<img src="{$url01}" class="left-up-img hover-animation" alt="{$alt0}" title="{$title0}">
+    					<img src="{$url02}" class="left-up-text" alt="R11" title="R11">
+  				  </a>
+            <a class="left-down hover-box oppo-tj"  target="_blank">
+    					<img src="{$url11}" class="left-down-img hover-animation" alt="{$alt1}" title="{$title1}">
+    					<img src="{$url12}" class="left-down-text" alt="{$alt1}" title="{$title1}">
+  				  </a>
+        	</div>
+  			<div class="pull-right">
+          <a class="whole-right hover-box oppo-tj"  target="_blank">
+  					<img src="{$url21}" class="whole-right-img hover-animation" alt="{$alt2}" title="{$title2}">
+  					<img src="{$url22}" class="whole-right-text" alt="{$alt2}" title="{$title2}">
+  				</a>
+        </div>
+      </div>
+  </div>
+<div class="box-products">
+    <div class="wrapper">
+        <div class="desk-title">OPPO 产品系列</div>       
+        {foreach $big as $key=>$val}                       
+          <div class="brick-name">
+            <div class="pull-left">
+                <span class="serial-slogan"><span  class="serial-name">{$val['name']}</span>&nbsp;&nbsp;&nbsp;&nbsp;{$val['des']}</span>
+            </div>
+                <div class="pull-right">
+                    <span class="" >
+                        <div class="oppo-tj geng">查看更多</div>
+                    </span>
+                    <span class="icon-more">
+                        <a href=""  class="oppo-tj" >
+                            <img src="__PICTURE__icon-more.png">
+                        </a>
+                    </span>
+                </div>
+          </div>
+        <div class="brick-list">
+          {foreach $small as $k=>$value} 
+          {if $big[$key]['cat'] == $small[$k]['series']} 
+          <a href="/index/shop/details/id/{$value['pid']}">      
+              <div class="brick-item serial gengduo" id="div1">
+                  <div class="brick-img">
+                    <img src="{$value['path_url']}" alt="{$value['alt']}" title="{$value['title']}">
+                  </div>
+                  <div class="brick-content">
+                    <div class="brick-title">{$value['pname']}</div>
+                    <p class="brick-desc">{$value['description']}</p>
+                  </div>
+              </div></a> 
+              {/if}
+         {/foreach}                     
+        </div>
+        {/foreach}
+    </div>
+    <div class="oppo-feature">
+      <div class="wrapper">
+        <div class="desk-title">OPPO 产品特色</div>
+        <div class="feature-item">
+          <div class="pull-left">
+            <a href="http://www.oppo.com/cn/photogallary/#1" target="_blank" class="oppo-tj" data-tj="www|link|product|feature_1">
+              <img src="__PICTURE__201601211001243yg3ufpx23rdhmt0.jpg" alt="OPPO摄影廊" title="OPPO摄影廊">
+            </a>
+          </div>
+          <div class="pull-right">
+            <a href="//hd.oppo.com/2015/vooc/index.html" target="_blank" class="oppo-tj" data-tj="www|link|product|feature_2">
+              <img src="__PICTURE__20160121100120nobg0mg0q08c8tho.jpg" alt="VOOC闪充" title="VOOC闪充" class="feature-second">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div> 
+</div>
+</main> 
+
+<div class="font-normal">
+  {include file="/index/footer" /}
+</div>
+
+<div class='navi-scroll'>
+  <div class="navi-scroll-content">
+    <a href="javascript:;" class="scroll-top-btn"><span>回到顶部</span><i></i></a>
+      </div>
+</div>
+
+
+<script src="__JS__lib.min.js"></script>
+
+<script src="__JS__custom_form.js"></script>
+
+<script src="__JS__scripts.js"></script>
+
+<script src="__JS__oppo.min.js"></script>
+<script type="text/javascript" src='__JS__jquery-1.11.3.js'></script>
+<script type="text/javascript">
+  var obig  = document.getElementsByClassName('geng');
+  window.onload = function({
+    for (var i = 0; i < obig.length-1; i++) {
+      obig[i].className='oppo-tj geng ' + i
+    }
+  });
+</script>
+<script type="text/javascript">
+  var abig= [];
+  var obig  = document.getElementsByClassName('geng'); 
+  for (var i = 0; i < obig.length-1; i++) {
+
+  }
+ 
+</script>
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:wb="http://open.weibo.com/wb">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="applicable-device" content="pc,mobile">
+<!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+<title>OPPOR11_前后2000万拍照更清晰_OPPO手机官方社区</title>
+<base target="_blank" />
+<link href="__CSS__common.min.css" rel="stylesheet">
+
+
+
+
+
+<!--[if lte IE 8]>
+<script>'abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output picture progress section summary template subline time video'.replace(/\w+/g,function(n){document.createElement(n)});</script>
+<![endif]-->
+<script>var baseUrl='',siteName='OPPO社区',hostInfo='http://www.oppo.cn',ossHost='//www.oppo.cn',rsaSign={sign:'RB2gSze3AmQFRvdan8urBPTIzaM+uLCwMQG7nlk5eZvrgVgq+ymHTlgryhfXzalyyvqWG5wj6U6URqA5nVW7J+ogNIMx2WmsYl9Wrt2kM5kZbdwyBaMo10JPA2TjCTGsCwZy+BRJHmvOcsY6UnZ9IWPq90ijtIFxnRAFSUEeZU8='},themeUrl='/themes/default',addScript=function(a){var b=document,c="script",d=b.createElement(c),e=b.getElementsByTagName(c)[0];d.async=1,d.src=a,e.parentNode.insertBefore(d,e)},_hmt=_hmt||[];addScript("//hm.baidu.com/hm.js?fab357f3d6fac1bd87ade8e294603d06");!function(a,b,c){a["GoogleAnalyticsObject"]=c,a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)},a[c].l=1*new Date,addScript(b)}(window,"//www.google-analytics.com/analytics.js","ga"),ga("create","UA-29338249-14","auto"),ga("send","pageview");</script>
+</head>
+<body>
+
+<div class="Wrap">
+{include file="/bbs/header" /}
+
+
+
+
+
+<main class="Cb"> 
+
+    <!--面包屑开始-->
+    <p class="Bread Hide"><a class="First" target="_self" href="http://www.oppo.cn">OPPO社区<s></s></a><span>动态<u></u><s></s></span></p>
+    <!--面包屑结束--> 
+  
+  {include file="/bbs/right" /}
+  
+  <div class="Left"> 
+    
+
+    
+    <!--动态列表开始--> 
+    
+      <div class="Trends Box" aj-scroll="/thread/thread/stream.json" aj-config='{"cache":false}' aj-response="rStream">
+        <ul class="Dn" aj-repeat="threads" aj-handle="hThread" aj-id="{@threads.tid@}">
+          <li class="Ava">
+            <a class="Avatar" href="/member-{@threads.uid@}-1">
+              <img src="/themes/default/images/transparent.png" data-src="{@threads.author.avatar_url@}" alt="{@threads.author.nickname@}" />
+              <i class="{@threads.author.is_vip.replace(0,Dn)@}"></i>
+            </a>
+          </li>
+          <li class="Top">
+            <a class="Name" href="/member-{@threads.uid@}-1">{@threads.author.nickname@}</a>
+            <span class="Group">{@threads.author.display_group_names@}</span>
+            <p class="Drop">
+              <a class="More"></a>
+              <span>
+                <a class="Favorite {@threads.is_favorite.replace(1,Favorited)@}" aj-param='{"tid":{@threads.id@}}'><i></i>{@threads.favorite_text@}</a>
+                <a class="Report" tid="{@threads.id@}"><i></i>举报</a>
+              </span>
+            </p>
+          </li>
+          <li class="Tail">{@threads.dateline@}&nbsp; {@threads.ext.tail@}</li>
+          <li class="Des"> 
+            <h2><a href="/thread-{@threads.id@}-1">{@threads.subject@}</a></h2>
+            <p>{@threads.summary@}</p>
+          </li>
+          <li class="For {@threads.disRelated@}">
+            <a href="/thread-{@threads.related.id@}-1">
+            <span><img src="/themes/default/images/transparent.png" data-src="{@threads.related.img.replace(small,middle)@}" alt="" /></span>
+            </a>
+            <h3>@{@threads.related.nickname@}</h3>
+            <p>{@threads.related.summary@}</p>
+          </li>
+          <li class="Pic {@threads.disImage@}">
+            <a href="/thread-{@threads.id@}-1"><span class="Dn N{@imglist.Index@}" aj-repeat="threads.imglist"><img src="/themes/default/images/transparent.png" data-src="{@imglist.path@}" alt="{@threads.subject@}" /></span></a>
+          </li>
+          <li class="Pic {@threads.disVideo@}">
+            <a href="/thread-{@threads.id@}-1"><span class="N0"><img src="/themes/default/images/transparent.png" data-src="{@threads.video.cover@}" alt="{@threads.subject@}" /></span></a>
+          </li>
+          <li class="Bot">
+            <span class="View"><i></i>{@threads.browse@}</span>
+            <a class="Forward" tid="{@threads.id@}" author_uid="{@thread.uid@}"><i></i>{@threads.repost@}</a>
+            <a class="Reply" tid="{@threads.id@}" author_uid="{@thread.uid@}"><i></i>{@threads.reply@}</a>
+            <a class="Praise {@threads.is_praise.replace(1,Praised)@}" aj-param='{"type":0,"tid":{@threads.id@},"author_uid":{@threads.uid@}}'><i></i>{@threads.praise@}</a>
+          </li>
+        </ul>        
+      </div>
+
+     
+    <!--动态列表结束--> 
+  </div>
+</main>
+</div>
+{include file="/bbs/footer" /}
+
+<ul id="Bottom" class="Show">
+  <li class="Down Dn"> <a name="link" class="Fr Btn Dn" href=""></a> <a target="_self" href="/login" rel="nofollow">登录</a><span class="FFa MLR10">|</span><a target="_self" href="/register" rel="nofollow">注册</a> </li>
+  <li class="Sign Dn"><a class="Fr Btn">点击签到</a>您今天还没签到！</li>
+  <li class="Publish Dn">
+    <table width="100%">
+      <tr>
+                <td nowrap="nowrap" align="right"><a class="Btn" target="_self" href="/add" rel="nofollow">发帖讨论</a></td>
+      </tr>
+    </table>
+  </li>
+</ul>
+
+<!--动态对话框开始-->
+<dialog id="Report" class="Box">
+  <dl>
+    <dt><a class="Close">×</a>举报</dt>
+    <dd>
+      <form>
+        <h6>举报类型:</h6>
+        <p class="P Select"> <label class="Dn" aj-repeat="data">{@data.name@}</label> </p>
+        <p Class="P"> <input type="text" name="message" /></p>
+        <p class="TAr"><button type="submit">确定</button></p>
+      </form>
+    </dd>
+  </dl>
+</dialog>
+<dialog id="Shield" class="Box">
+  <dl>
+    <dt><a class="Close">×</a>屏蔽该帖</dt>
+    <dd>
+      <form class="TAc">
+          <h6></h6>
+          <input type="hidden" name="topic_id" /><input type="hidden" name="page" />
+          <p class="MT20"><button type="reset" class="Btn-W MR10">取消</button><button type="submit">确定</button></p>
+      </form>
+    </dd>
+  </dl>
+</dialog>
+<dialog id="ShieldTa" class="Box">
+  <dl>
+    <dt><a class="Close">×</a>屏蔽TA</dt>
+    <dd>
+      <form class="TAc">
+          <h6></h6>
+          <p class="MT20"><button type="reset" class="Btn-W MR10">取消</button><button type="submit">确定</button></p>
+      </form>
+    </dd>
+  </dl>
+</dialog>
+<dialog id="Reply" class="Box">
+  <dl>
+    <dt><a class="Close">×</a><span>转发</span></dt>
+    <dd>
+      <div class="For"> </div>
+      <form class="Comment Cb">
+        <div class="Container">
+          <textarea name="content"></textarea>
+        </div>
+        <button class="Fr" type="submit">转发</button> <a class="Emot"></a> <a class="Image"></a>
+      </form>
+    </dd>
+  </dl>
+</dialog>
+<dialog id="At" class="Box">
+  <dl>
+    <dt>@我的朋友<a class="Close">×</a></dt>
+    <dd>
+      <p class="P"> <input type="text" name="user" /></p>
+      <p class="P Select MB0" aj-config='{"emptyShow":0}'> <label class="Dn" aj-repeat="data" name="oppo_at" title="@{@data.uid@}" href="/member-{@data.uid@}-1">@{@data.nickname@}</label> </p>
+    </dd>
+  </dl>
+</dialog>
+<dialog id="Emot" class="Box"> <a class="Close">×</a>
+  <dl>
+    <dt class="Tab" aj-response="rEmot"><a class="Dn" aj-repeat="type">{@type.name@}</a></dt>
+    <dd>
+      <div class="Dn" aj-repeat="type">
+        <p aj-param='{"type_id":{@type.id@}}'> <a class="Dn" aj-repeat="data" title="{@data.name@}"><img name="oppo_smiley" src="__IMAGES__transparent.png" data-src="{@data.img_url@}" alt="{@data.label@}" /></a> </p>
+      </div>
+    </dd>
+  </dl>
+</dialog>
+<dialog id="top" class="Box">
+  <dl>
+    <dt><a class="Close">×</a>置顶</dt>
+    <dd>
+      <form>
+          <h6>置顶时间:</h6>
+          <p class="P"><input type="text" name="start"></p>
+          <h6>到</h6>
+          <p class="P"><input type="text" name="end"></p>
+          <h6>置顶理由</h6>
+          <p class="P Select Dn"> <label class="Dn" aj-repeat="data">{@data.name@}</label> </p>
+          <p class="P"> <input type="text" name="reason" /></p>
+          <p class="TAr"><button type="submit">确定</button></p>
+      </form>
+    </dd>
+  </dl>
+</dialog>
+<!--动态对话框结束-->
+
+<script src="__JS__common.min.js"></script>
+<script src="__JS__thread_stream.js?88111fa6"></script>
+</body>
+</html>
