@@ -22,4 +22,21 @@ class User extends Model
 		$udertype = ['0'=>'买家','1'=>'管理员','2'=>'卖家'];
 		return $udertype[$value];
 	}
+	public function checkuser()
+	{
+		return $this->select();
+	}
+	public function islog($data)
+	{
+		return $this->save(['is_log'=>$data['islog']],['uid'=>$data['uid']]);
+	}
+	public function usermodify($data)
+	{
+		return $this->save([
+				'nickname'=>$data['username'],
+				'email'=>$data['email'],
+				'tel'=>$data['mobile'],
+		],['uid']=>$data['uid']);
+	}
+
 }

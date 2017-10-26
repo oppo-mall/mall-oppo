@@ -1,0 +1,106 @@
+<!-- BEGIN HEADER -->
+<header>
+  <div class="Top">
+     
+    <a id="Top_User" class="Fr Show Top-User" target="_self" href=""><img src="__PICTURE__transparent.png"  /></a> 
+     
+    <a id="Top_Menu" class="Fl Show"></a>
+    <nav class="Dn">
+       
+      <a href="" target="_self" class="http://www.rong.com/index/bbs/bbs">
+      首页
+      </a> 
+       
+      <a href="http://www.rong.com/index/bbs/theme" target="_self" class="">
+      话题
+      </a> 
+       
+      <a href="http://www.rong.com/index/bbs/activity" target="_self" class="">
+      活动
+      </a> 
+       
+      <a href="http://www.rong.com/index/bbs/picture" target="_self" class="">
+      拍客
+      </a> 
+       
+      <a href="http://www.rong.com/index/bbs/trends" target="_self" class="">
+      动态
+      </a> 
+       
+    </nav>
+    <p class="Cb Hide"> <span class="Fr"> 
+       
+      <a id="Top_Member" target="_self" href="">U210955037</a> <a id="Top_Logout" target="_self" href="" rel="nofollow">登出</a> 
+       
+      </span> 
+       
+      <a href="http://www.rong.com" target="_blank"> 
+      OPPO官网
+      </a> 
+       
+      <a href="" target="_blank"> 
+      管理规定
+      </a> 
+    </p>
+  </div>
+  <div class="Bot Cb Pr"> <a id="Search_Btn" class="Hide"></a>
+    <form id="Search" action="">
+      <input name="keyword" placeholder="" /><button type="submit">搜索</button>
+    </form>
+    <a class="Logo Fl" target="_self" href="" title="OPPO社区"></a>
+    <nav id="nav"> 
+     
+       <a href="http://www.rong.com/index/bbs/bbs" target="_self" class="S">
+      首页
+      </a> 
+       
+      <a href="http://www.rong.com/index/bbs/bbs_theme" target="_self" class="">
+      话题
+      </a> 
+       
+      <a href="http://www.rong.com/index/bbs/bbs_activity" target="_self" class="">
+      活动
+      </a> 
+       
+      <a href="http://www.rong.com/index/bbs/bbs_picture" target="_self" class="">
+      拍客
+      </a> 
+       
+      <a href="http://www.rong.com/index/bbs/bbs_trends" target="_self" class="">
+      动态
+      </a> 
+    </nav>
+  </div>
+</header>
+<!-- END HEADER -->
+
+<script type="text/javascript">
+  window.onload = function () {
+    var oNav = document.getElementById('nav');
+   
+    var test = window.location.href;
+    //alert(test);
+    var methods = test.split('/');
+    var method = methods.pop();
+    
+    if (method == 'bbs') {
+     oNav.children[0].className = 'S';
+    } else if (method == 'bbs_theme') {
+     oNav.children[0].className = ' ';
+     oNav.children[1].className = 'S';
+    } else if (method == 'bbs_activity') {
+     oNav.children[0].className = ' ';
+     oNav.children[2].className = 'S';
+    }else if (method == 'bbs_picture') {
+     oNav.children[0].className = ' ';
+     oNav.children[3].className = 'S';
+    }else if (method == 'bbs_trends') {
+     oNav.children[0].className = ' ';
+     oNav.children[4].className = 'S';
+    }else if (method == 'bbs_details') {
+     oNav.children[0].className = ' ';
+     oNav.children[4].className = ' ';
+    }
+  };
+
+</script>

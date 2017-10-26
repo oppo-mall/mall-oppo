@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:wb="http://open.weibo.com/wb">
+<head>
+  <meta charset="utf-8">
+  <title>OPPOR11_前后2000万拍照更清晰_OPPO手机官方社区</title>
+   <meta name="robots" content="noindex,nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link href="__CSS__common.min.css" rel="stylesheet">
+  <!-- <script type="text/javascript" src="__BOOTSTRAP__js/bootstrap.js"></script> -->
+</head>
+<body>
+<div class="Wrap">
+{include file="/bbs/header" /}
+<main>
+  <p class="Bread Hide"><a class="First" target="_self" href="http://www.oppo.cn">OPPO社区<s></s></a><span>发表<u></u><s></s></span></p>
+  <form id="publish" class="Comment" aj-post="/thread/thread/create.json" aj-param="pCreate" aj-success="sCreate">
+    <div class="Box">
+      <p class="tit"><input placeholder="请输入标题" name="subject" value=""></p>
+      <p class="rec">推荐话题<span aj-get="/topic/index/related.json" aj-config="{&quot;emptyShow&quot;:0}" aj-param="{&quot;type&quot;:6,&quot;limit&quot;:6}" aj-state="loaded"><a class="Dn C3fcab8" aj-repeat="data" name="oppo_topic" href="/list-{@data.id@}-1" title="#{{@data.id@}}#">#{@data.name@}#</a></span></p>
+      <div class="Container">
+        <textarea name="content" style="display: none;"></textarea><input type="text" id="xhe0_fixffcursor" style="position:absolute;display:none;"><table id="xhe0_container" class="xhe_default" cellspacing="0" cellpadding="0" role="presentation"><tbody><tr><td id="xhe0_Tool" class="xheTool" unselectable="on" role="presentation" style="display:none;"><span class="xheGStart"></span><span class="xheGEnd"></span><br></td></tr><tr><td id="xhe0_iframearea" class="xheIframeArea" role="presentation"><iframe frameborder="0" id="xhe0_iframe" src="javascript:;" style="vertical-align: top; width: 980px; height: 320px;"></iframe></td></tr></tbody></table>
+      </div>
+            <p><a class="Emot" style="visibility: visible;"></a><a class="Image" style="visibility: visible;"></a><a class="At" style="visibility: visible;"></a><a class="Topic" style="visibility: visible;"></a><a class="Attach Dn"></a><a class="Link" style="visibility: visible;"></a></p>
+    </div>
+    <p class="bot TAr"><button class="Btn-W Btn-L MR10 Dn">保存草稿</button><button type="submit" class="Btn-L">发表话题</button></p>
+  </form>
+</main>
+</div>
+{include file="/bbs/footer" /}
+
+<script src="__JS__common.min.js"></script>
+<script src="__JS__thread_create.js"></script> 
+</body>
+</html>

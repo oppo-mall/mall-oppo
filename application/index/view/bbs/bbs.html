@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:wb="http://open.weibo.com/wb">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="applicable-device" content="pc,mobile">
+<!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+<title>OPPOR11_前后2000万拍照更清晰_OPPO手机官方社区</title>
+<base target="_blank" />
+<link href="__CSS__common.min.css" rel="stylesheet">
+
+
+
+
+
+<!--[if lte IE 8]>
+<script>'abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output picture progress section summary template subline time video'.replace(/\w+/g,function(n){document.createElement(n)});</script>
+<![endif]-->
+<script>var baseUrl='',siteName='OPPO社区',hostInfo='http://www.oppo.cn',ossHost='//www.oppo.cn',rsaSign={sign:'blJeEMryJsriO+hmBkNN4UzC5qIePBNSxIoRS3JZL12S61ayYIYMFMnBS/+wDqiPYboAnex8YYtQRudz2FB6W0B+10fDeUkKbg+wrDC+pCZX+tmjFzj3gdreI6+MzTpBEsgMDOmwKHnY7mIzaA50LCPbrCRJbOiwEae3ReWtF54='},themeUrl='/themes/default',addScript=function(a){var b=document,c="script",d=b.createElement(c),e=b.getElementsByTagName(c)[0];d.async=1,d.src=a,e.parentNode.insertBefore(d,e)},_hmt=_hmt||[];addScript("//hm.baidu.com/hm.js?fab357f3d6fac1bd87ade8e294603d06");!function(a,b,c){a["GoogleAnalyticsObject"]=c,a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)},a[c].l=1*new Date,addScript(b)}(window,"//www.google-analytics.com/analytics.js","ga"),ga("create","UA-29338249-14","auto"),ga("send","pageview");</script>
+</head>
+<body>
+
+<div class="Wrap">
+{include file="/bbs/header" /}
+
+<!--首页-->
+
+<main class="Cb MT0"> 
+  
+  <!--轮播开始-->
+  <div class="Roll Box">
+    <p class="C"> 
+       
+      <a href="http://hd.oppo.com/act/m/2017/shequ_tenyear/index.html"><img src="/themes/default/images/transparent.png" data-src="http://imgfs.oppo.cn/uploads/common/2017/10/20/15084804127577.jpg" /></a> 
+       
+      <a href="http://hd.oppo.com/act/m/2017/tripphoto/index.html"><img src="/themes/default/images/transparent.png" data-src="http://imgfs.oppo.cn/uploads/common/2017/10/19/15084084601873.jpg" /></a> 
+       
+      <a href="http://www.oppo.cn/thread-146111766-1"><img src="/themes/default/images/transparent.png" data-src="http://imgfs.oppo.cn/uploads/common/2017/10/18/15083224814676.jpg" /></a> 
+       
+      <a href="http://hd.oppo.com/act/m/2017/food/index.html"><img src="/themes/default/images/transparent.png" data-src="http://imgfs.oppo.cn/uploads/common/2017/10/18/15083221922215.jpg" /></a> 
+       
+      <a href="http://www.oppo.cn/thread-145052203-1"><img src="/themes/default/images/transparent.png" data-src="http://imgfs.oppo.cn/uploads/common/2017/10/16/15081523055391.jpg" /></a> 
+       
+      <a href="http://hd.oppo.com/act/m/2017/shaonian/index.html"><img src="/themes/default/images/transparent.png" data-src="http://imgfs.oppo.cn/uploads/common/2017/10/13/15078931025895.jpg" /></a> 
+       
+    </p>
+  </div>
+  <!--轮播结束--> 
+  
+  {include file="/bbs/right" /}
+  <!--首页列表开始-->  
+  <div class="Left">
+    <dl class="Box" aj-scroll="/thread/hot/index.json" aj-param='{"page":2,"limit":20}'>
+      <dt>热帖推荐</dt>
+      <dd class="Trends">
+        <ul class="Dn" aj-repeat="data" aj-handle="hThread" aj-id="{@data.id@}">
+          <li class="Ava">
+            <a class="Avatar" href="/member-{@data.uid@}-1">
+              <img src="/themes/default/images/transparent.png" data-src="{@data.author.avatar_url@}" alt="{@data.author.nickname@}" />
+              <i class="{@data.author.is_vip.replace(0,Dn)@}"></i>
+            </a>
+          </li>
+          <li class="Top">
+            <a class="Name" href="/member-{@data.uid@}-1">{@data.author.nickname@}</a>
+            <span class="Group">{@data.author.display_group_names@}</span>
+            <p class="Drop">
+              <a class="More"></a>
+              <span>
+                <a class="Follow {@data.author.is_followed@}" uid="{@data.uid@}"><i></i>{@data.author.follow_text@}</a>
+                <a class="Favorite {@data.is_favorite.replace(1,Favorited)@}" aj-param='{"tid":{@data.id@}}'><i></i>收藏</a>
+                <a class="Report" tid="{@data.id@}"><i></i>举报</a>
+              </span>
+            </p>
+          </li>
+          <li class="Tail">{@data.dateline@}&nbsp; {@data.ext.tail@}</li>
+          <li class="Des"> 
+            <h2><a href="/thread-{@data.id@}-1">{@data.subject@}</a></h2>
+            <p>{@data.summary@}</p>
+          </li>
+          <li class="Pic {@data.disImage@}">
+            <a href="/thread-{@data.id@}-1"><span class="Dn N{@imglist.Index@}" aj-repeat="data.imglist"><img src="/themes/default/images/transparent.png" data-src="{@imglist.path@}" alt="{@data.subject@}" /></span></a>
+          </li>
+          <li class="Pic {@data.disVideo@}">
+            <a href="/thread-{@data.id@}-1"><span class="N0"><img src="/themes/default/images/transparent.png" data-src="{@data.video.cover@}" alt="{@data.subject@}" /></span></a>
+          </li>
+          <li class="Bot">
+            <span class="View"><i></i>{@data.browse@}</span>
+            <a class="Forward" tid="{@data.id@}" author_uid="{@data.uid@}"><i></i>{@data.repost@}</a>
+            <a class="Reply" tid="{@data.id@}" author_uid="{@data.uid@}"><i></i>{@data.reply@}</a>
+            <a class="Praise {@data.is_praise.replace(1,Praised)@}" aj-param='{"type":0,"tid":{@data.id@},"author_uid":{@data.uid@}}'><i></i>{@data.praise@}</a>
+          </li>
+        </ul>
+
+                        <ul class="BT0 MT0" aj-id="147596376">
+          <li class="Ava">
+            <a class="Avatar" href="/member-31606619-1">
+            <img src="/themes/default/images/transparent.png" data-src="http://imgfs.oppo.cn/uc_server/data/avatar/noavatar_big.gif" alt="蔬菜男孩的老妈" />
+              <i></i>            </a>
+          </li>
+          <li class="Top">
+            <a class="Name" href="/member-31606619-1">蔬菜男孩的老妈</a>
+            <span class="Group">Lv10.博士后O粉</span>
+            <p class="Drop">
+              <a class="More"></a>
+              <span>
+                                <a class="Follow " uid="31606619"><i></i>关注</a>
+                                <a class="Favorite " aj-param='{"tid":147596376}'><i></i>收藏</a>
+                <a class="Report" tid="147596376"><i></i>举报</a>
+              </span>
+            </p>
+          </li>
+          <li class="Tail">10小时前&nbsp;</li>
+          <li class="Des">
+            <h2><a href="/thread-147596376-1"></a></h2>
+            <p><a type="3" class="C3fcab8" href="/list-160-1">#视频实验室#</a><a type="3" class="C3fcab8" href="/list-165-1">#向美食势力低头#</a><a type="3" class="C3fcab8" href="/list-169-1">#十月印象#</a>肯德基法风烧饼 十点以后照样想吃就吃<a type="1" class="C3fcab8" href="/member-6720126-1" uid="6720126">@O社长</a> </p>
+          </li>
+                              <li class="Pic Vid">
+            <a href="/thread-147596376-1"><span class="N0"><img src="/themes/default/images/transparent.png" data-src="http://vodfs.oppo.cn/snapshot/vodwmh/20171020/jPu6yE225940/00001.jpg_w400.jpg" alt="" /></span></a>
+          </li>
+                    <li class="Bot">
+            <span class="View"><i></i>68</span>
+            <a class="Reply" tid="147596376" author_uid="31606619"><i></i>19</a>
+            <a class="Praise " aj-param='{"type":0,"tid":147596376,"author_uid":31606619}'><i></i>289</a>
+          </li>
+        </ul>
+    
+                      </dd>
+    </dl>
+  </div>
+  <!--首页列表结束--> 
+  <!--友情链接开始--> 
+  <dl class="Box Hide friendly">
+    <dt>友情链接</dt>
+    <dd>
+            <a href="http://www.oppo.cn/search-thread?keyword=OPPO R11&page=1">OPPO R11</a>
+            <a href="http://www.oppo.cn/search-thread?keyword=OPPO R9s&page=1">OPPO R9s</a>
+            <a href="http://www.oppo.cn/list-11-1">Find7论坛</a>
+            <a href="http://www.mumayi.com/">安卓游戏</a>
+            <a href="http://www.romzj.com/">ROM之家</a>
+            <a href="http://www.7to.cn/">奇兔刷机</a>
+            <a href="http://www.romjd.com/">ROM基地</a>
+            <a href="http://bbs.cnmo.com/">手机中国论坛</a>
+            <a href="http://bbs.25pp.com/">苹果论坛</a>
+            <a href="http://bbs.mfunz.com/">魔趣安卓论坛</a>
+            <a href="http://bbs.ydss.cn/">移动叔叔</a>
+            <a href="http://quan.ithome.com/">IT圈</a>
+            <a href="http://bbs.uc.cn/">UC浏览器</a>
+            <a href="http://mobile.hiapk.com/">安卓手机</a>
+            <a href="http://bbs.coloros.com/">ColorOS社区</a>
+          </dd>
+  </dl>
+  <!--友情链接结束-->
+</main>
+</div>
+<!-- BEGIN FOOTER -->
+
+<footer>
+  <ul>
+    <li class="Top">
+            <a href="http://www.oppo.cn/" target="_blank">
+      OPPO论坛
+      </a>
+            <span class="FFa MLR10">|</span>
+                  <a href="http://www.oppo.cn/app" target="_blank">
+      OPPO乐园
+      </a>
+            <span class="FFa MLR10">|</span>
+                  <a href="http://www.oppo.cn/search-thread?keyword=OPPOR11&page=1" target="_blank">
+      OPPOR11
+      </a>
+            <span class="FFa MLR10">|</span>
+                  <a href="http://www.oppo.cn/search-thread?keyword=OPPOR9&page=1" target="_blank">
+      OPPOR9
+      </a>
+                              <span class="FFa MLR10">|</span> <a target="_self" href="/logout" rel="nofollow">登出</a>
+          </li>
+    <li><strong name="company"></strong> ( <a name="icp" href="http://www.miitbeian.gov.cn/"></a> ) </li>
+    <li id="Analytics">
+      <a key ="54a21ad6efbfb03518d8f09d" logo_size="83x30" logo_type="realname" href="//www.anquan.org" ><script src="//static.anquan.org/static/outer/js/aq_auth.js"></script></a>
+    </li>
+  </ul>
+</footer>
+<!-- END FOOTER -->
+
+<ul id="Bottom" class="Show">
+  <li class="Down Dn"> <a name="link" class="Fr Btn Dn" href=""></a> <a target="_self" href="/login" rel="nofollow">登录</a><span class="FFa MLR10">|</span><a target="_self" href="/register" rel="nofollow">注册</a> </li>
+  <li class="Sign Dn"><a class="Fr Btn">点击签到</a>您今天还没签到！</li>
+  <li class="Publish Dn">
+    <table width="100%">
+      <tr>
+                <td nowrap="nowrap" align="right"><a class="Btn" target="_self" href="/add" rel="nofollow">发帖讨论</a></td>
+      </tr>
+    </table>
+  </li>
+</ul>
+
+<!--动态对话框开始-->
+<dialog id="Report" class="Box">
+  <dl>
+    <dt><a class="Close">×</a>举报</dt>
+    <dd>
+      <form>
+        <h6>举报类型:</h6>
+        <p class="P Select"> <label class="Dn" aj-repeat="data">{@data.name@}</label> </p>
+        <p Class="P"> <input type="text" name="message" /></p>
+        <p class="TAr"><button type="submit">确定</button></p>
+      </form>
+    </dd>
+  </dl>
+</dialog>
+<dialog id="Shield" class="Box">
+  <dl>
+    <dt><a class="Close">×</a>屏蔽该帖</dt>
+    <dd>
+      <form class="TAc">
+          <h6></h6>
+          <input type="hidden" name="topic_id" /><input type="hidden" name="page" />
+          <p class="MT20"><button type="reset" class="Btn-W MR10">取消</button><button type="submit">确定</button></p>
+      </form>
+    </dd>
+  </dl>
+</dialog>
+<dialog id="ShieldTa" class="Box">
+  <dl>
+    <dt><a class="Close">×</a>屏蔽TA</dt>
+    <dd>
+      <form class="TAc">
+          <h6></h6>
+          <p class="MT20"><button type="reset" class="Btn-W MR10">取消</button><button type="submit">确定</button></p>
+      </form>
+    </dd>
+  </dl>
+</dialog>
+<dialog id="Reply" class="Box">
+  <dl>
+    <dt><a class="Close">×</a><span>评论</span></dt>
+    <dd>
+      <form class="Comment Cb" aj-state="loaded">
+        <div class="Container">
+          <textarea name="content"  style="display: none;"></textarea><input type="text" id="xhe0_fixffcursor" style="position:absolute;display:none;"><table id="xhe0_container" class="xhe_default" cellspacing="0" cellpadding="0" role="presentation"><tbody><tr><td id="xhe0_Tool" class="xheTool" unselectable="on" role="presentation" style="display:none;"><span class="xheGStart"></span><span class="xheGEnd"></span><br></td></tr><tr><td id="xhe0_iframearea" class="xheIframeArea" role="presentation"><iframe frameborder="0" id="xhe0_iframe" src="javascript:;" style="vertical-align: top; width: 418px; height: 96px;"></iframe></td></tr></tbody></table>
+        </div>
+        <button class="Fr" type="submit">评论</button> <a class="Emot" style="visibility: visible;"></a> <a class="Image" style="visibility: visible;" up-state="uploaded"></a>
+      </form>
+    </dd>
+  </dl>
+</dialog>
+
+<dialog id="At" class="Box">
+  <dl>
+    <dt>@我的朋友<a class="Close">×</a></dt>
+    <dd>
+      <p class="P"> <input type="text" name="user" /></p>
+      <p class="P Select MB0" aj-config='{"emptyShow":0}'> <label class="Dn" aj-repeat="data" name="oppo_at" title="@{@data.uid@}" href="/member-{@data.uid@}-1">@{@data.nickname@}</label> </p>
+    </dd>
+  </dl>
+</dialog>
+<dialog id="Emot" class="Box"> <a class="Close">×</a>
+  <dl>
+    <dt class="Tab" aj-response="rEmot"><a class="Dn" aj-repeat="type">{@type.name@}</a></dt>
+    <dd>
+      <div class="Dn" aj-repeat="type">
+        <p aj-param='{"type_id":{@type.id@}}'> <a class="Dn" aj-repeat="data" title="{@data.name@}"><img name="oppo_smiley" src="/themes/default/images/transparent.png" data-src="{@data.img_url@}" alt="{@data.label@}" /></a> </p>
+      </div>
+    </dd>
+  </dl>
+</dialog>
+<dialog id="top" class="Box">
+  <dl>
+    <dt><a class="Close">×</a>置顶</dt>
+    <dd>
+      <form>
+          <h6>置顶时间:</h6>
+          <p class="P"><input type="text" name="start"></p>
+          <h6>到</h6>
+          <p class="P"><input type="text" name="end"></p>
+          <h6>置顶理由</h6>
+          <p class="P Select Dn"> <label class="Dn" aj-repeat="data">{@data.name@}</label> </p>
+          <p class="P"> <input type="text" name="reason" /></p>
+          <p class="TAr"><button type="submit">确定</button></p>
+      </form>
+    </dd>
+  </dl>
+</dialog>
+<!--动态对话框结束-->
+
+<script src="__JS__common.min.js"></script>
+</body>
+</html>

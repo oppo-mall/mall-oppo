@@ -2,18 +2,29 @@
 namespace app\admin\model;
 use think\Model;
 use think\Db;
-
+use traits\model\SoftDelete;
 
 class Adv extends Model
 {
-		
-	public function bo()
+	use SoftDelete;
+    protected $deleteTime = 'delete_time';
+
+	public function bo($bid)
 	{ 
-		return Db::name('adv')->where('bid',1)->order('order')->select();
+
+		return $this->where('bid',$bid)->order('order')->select();
 	}
 	public function addpic()
 	{
 		
 	}
 
+	public function delpicture($id)
+	{
+		return Adv::destroy($id);
+	}
+	public function uppic($info)
+	{
+		return $this->allowField(true)->save($info,['id' => $info['id']]);
+	}
 }
