@@ -2,10 +2,13 @@
 namespace app\admin\model;
 use think\Model;
 use think\Db;
+use traits\model\SoftDelete;
 
 
 class User extends Model
 {
+	use SoftDelete;
+	protected $deleteTime= 'delete_time';
 	public function checkAll($id)
 	{
 		return Db::name('user')->where('uid',$id)->find();
@@ -36,7 +39,28 @@ class User extends Model
 				'nickname'=>$data['username'],
 				'email'=>$data['email'],
 				'tel'=>$data['mobile'],
-		],['uid']=>$data['uid']);
+		],['uid'=>$data['uid']]);;
 	}
-
+	public function passchange($uid,$pwd)
+	{
+		return $this->save(['password'=>$pwd],['uid'=>$uid]);
+	}
+	public function ruandeluser($uid)
+	{
+		return User::destroy($uid);
+	}
+	public function checkdelete()
+	{
+		return User::onlyTrashed()->select();
+	}
+	public function replay($uid)
+	{
+		return $this->save([
+      			'delete_time'  => null,
+ 				 ],['uid' => $uid]);
+	}
+	public function readydel($uid)
+	{
+		return User::destroy($uid,true);
+	}
 }

@@ -23,8 +23,8 @@ class Index extends Controller
 	}
 	public function index()
 	{
-		 $user = Session::get('username');
-		 $this->assign('user', $user);
+		$user = Session::get('username');
+		$this->assign('user', $user);
 		//dump($user);
 		//查轮播图广告
 		$advance = $this->adv->selBig();

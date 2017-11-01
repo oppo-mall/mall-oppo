@@ -18,7 +18,6 @@ class Product extends Model
 		
 		return Db::view('product','pid,pname,series,description')
 				->view('img',['pid','path_url','alt','title'],'product.pid=img.pid')
-				->view('category',['cat,name,des'],'product.series=category.cat')
 				->select();
 	}
 	
@@ -136,6 +135,5 @@ class Product extends Model
 				
 
 	}
-
 	
 }

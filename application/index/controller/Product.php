@@ -18,11 +18,12 @@ class Product extends Controller
 
 	public function products()
 	{
-		 $user = Session::get('username');
-		 $this->assign('user', $user);
+		 // $user = Session::get('username');
+		 // $this->assign('user', $user);
 		//产品系列和分类
 		$big = $this->product->selCat();
 		$small = $this->product->selRes();
+
 		$this->assign('big', $big);
 		$this->assign('small', $small);
 		//dump($small);
@@ -41,7 +42,5 @@ class Product extends Controller
 		return $this->fetch();
 	}
 
-	
-
-	
+		
 }

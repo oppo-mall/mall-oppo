@@ -27,37 +27,53 @@
 
         <div class="register_title">注册OPPO帐号</div>
         <!--主体注册框-->
-        <form  class="register_form" id="sms_form" action="/index/index/doreg" method="post" >
+        
+       <!--  <form   id="sms_form" action="" method="post" > 
+            <button>12</button> -->
+            <div class="register_form">
              <div class="input_area">
                 <input type="text"  id="username" name="username" autocomplete="off"  class="username" placeholder="请输入手机号码/邮箱/用户名"/>
-                <span id="users"></span>
+                <span id="users" style="color: red"></span>
+                <span id="sure" style="color: green"></span>
                 <br/>
-                <input type="text"  id="yzm"  class="username " style="display: none" placeholder="请输入短信验证码" />
+                <div id="codePhone" style="display: none;">
+                   <input type="text"  id="yzmPhone"  class="username " style="width: 100px; " placeholder="请输入验证码"  /> 
+                   <button id="sendPhone" style="background-color: #2AAD6F;border:1px solid #ccc;opacity: 0.8;float: right;margin-top: -45px;height: 40px;color: white" >点击发送验证码</button>              
+                </div>
+                <div id="codeMail" style="display: none;">
+                   <input type="text"  id="yzmMail"  class="username " style="width: 100px; " placeholder="请输入验证码"  /> 
+                   <button id="sendMail" style="background-color: #2AAD6F;border:1px solid #ccc;opacity: 0.8;float: right;margin-top: -45px;height: 40px;color: white" >点击发送验证码</button>
+                   
+                
+                </div> 
+                <span id="code" style="color: red"></span>
+               
             </div>
             <div class="error_tip" id="info_username"></div>
             <div class="input_area">
-                <input type="password" name='pwd'  id="pwd"  autocomplete="off"  class="pwd" placeholder="请输入帐号密码" />
-                <span id="psd"></span>
+                <input type="password" name='pwd'  id="pwd"  autocomplete="off"  class="pwd" placeholder="请输入帐号密码"   />
+                <span id="psd" style="color: red"></span>
+                <span id="surePsd" style="color: green;"></span>
             </div>
             
             <div class="field">
                 <div class="fl">
-                    <label id="forCheckBox" class="checkBoxLabel "></label>
-                   <!--  <input type="checkbox" id="isaccept"  name="accept"/> -->
-                    <label id="checkBoxLabel1">已阅读并同意<a class="agree_link" href="http://uc.oppomobile.com/usercenter/document/340/register_simple.html" target="_blank">《OPPO帐号注册协议》</a></label>
+                    <label id="forCheckBox" for="isaccept" onclick="changeCheckbox1()" class="checkBoxLabel choosed"></label>
+                    <input type="checkbox" id="isaccept" checked="checked" name="accept">
+                    <label id="checkBoxLabel1">已阅读并同意<a class="agree_link" href="" target="_blank">《OPPO帐号注册协议》</a></label>
                 </div>
                 <div class="clear"></div>
+                <input type="hidden" id="msg1" value="" />
+                <input type="hidden" id="msg2" value="" />
+                
             </div>
             <div class="error_tip" id="info_accept"></div>
-
+           
             <input type="submit" class="button login_button" id="smsBtn" value="立即注册" style="margin-top:22px" />
-            <div class="error_tip1" id="info_sms_form"></div>
-            <input type="hidden" id="errorCode" value=""/>
-            <input type="hidden" id="errorMsg" value=""/>
-            <input type="hidden" id="source" name="source"   value=""/>
-            <input type="hidden" id="type" name="type" value="1" />
-            <input type="hidden" id="style" name="style" value="2" />
-        </form>
+            <br/>
+
+
+    </div>
     </div>
     <div class="footer_info">
          <p>© 2005 - 2017 东莞市永盛通信科技有限公司 版权所有 粤ICP备08130115号-1</p>
@@ -65,49 +81,211 @@
 </div>
 
 
-<input type="hidden" value="/captcha" id="captchaUrl"/>
-<input type="hidden" value='' id="getCaptchaJs"/>
-<input type="hidden" value='' id="captchaResult"/>
+
 <script src="__JS__jquery-1.9.1.min.js"></script>
-<!-- <script src="__JS__register.js?r=20170503" ></script> -->
+<!--  协议复选框  -->
+<script type="text/javascript">
+    function changeCheckbox1() {
+    var mylabel = document.getElementById('forCheckBox');
+    
+    if (mylabel.className == "checkBoxLabel choosed") {
+        mylabel.className = "checkBoxLabel";
+    } else {
+        mylabel.className = "checkBoxLabel choosed";
+    }
+}
 
+
+</script> 
 <script>
-    var yzm = document.getElementById('yzm');
-    var phoneReg = /^1[3|4|5|8|7][0-9]\d{4,8}$/;
-   /* var emailReg = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
-    var userReg = //;*/
-   /* var check = document.getElementById('forCheckBox');
-    $('#forCheckBox').click(function () {
-         $('#forCheckBox').className = 'checkBoxLabel choosed'
-    })
-*/
+    
+    var mail = document.getElementById('codeMail');
+    var phone = document.getElementById('codePhone');
+    var phoneReg = /^1[3|4|5|8|7][0-9]\d{8,9}$/;
+    var emailReg = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
+    var psdReg = /^[a-zA-Z0-9]{6,16}$/;
+    var userReg = /^[a-zA-Z0-9_-]{3,15}$/;
+    var number = /^[0-9]*[1-9][0-9]*$/;
 
+/*密码验证*/
+    $('#pwd').blur(function () {
+        var psd = $('#pwd').val();
+        //console.log(psd);
+        if (psd.length != 0) {
+            if (!psdReg.test(psd)) {
+                  $('#psd').html('6-16位,由字母，数字组成,不可纯数字、纯字母');
+                 
+            }
+        }
+        
+    });
+
+
+/*用户名验证*/
     $('#username').blur(function() {
         $('#users').html("");
         $('#psd').html("");
         var username = $('#username').val();
-        
-        
-        /*if (username.length > 15) {
-            $('#users').html('用户名过长')
-        };*/
-        if (username.length !=0 ){
+       
+        if (username.length != 0 ){
             $.ajax({
-                url: '/index/ajax/register',
+                url: '/user/ajax/register',
                 type: 'POST',
                 dataType: 'json',
-                async : false,
+                async : true,
                 data: {param:username},
                 success:success
             });
             function success(data){
                 if (data.status == 0) {
                     $('#users').html('用户名已被注册');
-                }
-                
+                     $('#sure').html('');
+                } else if (data.status == 1) {
+                    if (username.length < 3) {
+                          $('#users').html('3-15位,由字母，数字，下划线，减号组成');
+                    } else if (number.test(username)) {
+                        if (!phoneReg.test(username)) {
+                             $('#users').html('请输入正确的手机号');
+                               phone.style.display = 'none';
+                               mail.style.display = 'none';
+                                 $('#sure').html('');
+                        } else {
+                         $('#sure').html('手机号可用');
+                         phone.style.display = 'block';
+                        }
+                    } else if (!number.test(username)) {
+                        if(username.indexOf("@") >= 0 ) 
+                        { 
+                            if (emailReg.test(username)) {
+                                $('#sure').html('邮箱可用');
+                                mail.style.display = 'block';
+                            } else{
+                                $('#users').html('请输入正确的邮箱号');
+                                $('#sure').html('');
+                                mail.style.display = 'none';
+                                phone.style.display = 'none';
+                            }
+                        } else if (!userReg.test(username)) {
+                            $('#users').html('3-15位,由字母/数字/下划线/减号组成');
+                        } else if (userReg.test(username)){
+                         $('#sure').html('用户名可用');
+                        }
+                    } 
+                } 
             }
         }
+    }); 
+/*发送短信验证码*/
+    $('#sendPhone').click(function () {
+        var username = $('#username').val();
+       //$.post('/user/ajax/phone',{name:username},phoneCode);
+       $.ajax({
+                url: '/user/ajax/phone',
+                type: 'POST',
+                data: {param:username},
+                success:phoneCode
+            });
+        function phoneCode(data)
+        {
+           
+         $('#yzmPhone').blur(function () {
+           var yzmPhone = $('#yzmPhone').val();
+            if (yzmPhone != data) {
+                $('#code').html('验证码错误');
+            }
+
+        });
+           
+        }
+    });
+/*发送邮箱验证码*/
+    $('#sendMail').click(function () {
+        var username = $('#username').val();
+       //$.post('/user/ajax/phone',{name:username},phoneCode);
+       $.ajax({
+                url: '/user/ajax/mail',
+                type: 'POST',
+                data: {param:username},
+                success:mailCode
+            });
+        function mailCode(data)
+        {
+            
+            $('#yzmMail').blur(function () {
+           var yzmMail = $('#yzmMail').val();
+           
+            if (yzmMail != data) {
+                $('#code').html('验证码错误');
+            }
+        });
+           
+        }
+    });
+   
+/*注册用户*/
+    $('#smsBtn').click(function () {
+        var mylabel = document.getElementById('forCheckBox');
+        
+        var username = $('#username').val();
+        var icon = '__PICTURE__noavatar_middle.gif';
+        var password = $('#pwd').val();
+        var codem =  document.getElementById('codeMail');
+        var codep = document.getElementById('codePhone');
+       
+        if (mylabel.className == "checkBoxLabel") {
+            alert('请阅读并同意《OPPO账号注册协议》');
+        }else {
+            if (codem.style.display == 'block') {
+              $.ajax({
+                    url: '/user/user/doreg',
+                    type: 'POST',
+                    data: {email:username,password:password,icon:icon},
+                    success:register
+                });
+            function register(data)
+            {
+               window.location.href="/index/index/index"; 
+            }  
+           
+            
+            } else if (codep.style.display == 'block') {
+                     $.ajax({
+                            url: '/user/user/doreg',
+                            type: 'POST',
+                            data: {tel:username,password:password,icon:icon},
+                            success:register
+                        });
+                    function register(data)
+                    {
+                       window.location.href="/index/index/index"; 
+                    }
+                
+            } else{
+                 $.ajax({
+                        url: '/user/user/doreg',
+                        type: 'POST',
+                        data: {username:username,password:password,icon:icon},
+                        success:register
+                    });
+                function register(data)
+                {
+                   window.location.href="/index/index/index"; 
+                }
+            } 
+        }
+        
+      
+        
+     /*  codem.style.display == 'none';
+       codep.style.display == 'none';
+    $('#username').html('');
+       icon = '';
+       $('#pwd').html('');
+            
+        */
     });
 </script>
+
+
 </body>
 </html>

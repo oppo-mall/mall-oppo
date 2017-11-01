@@ -86,7 +86,7 @@ class Index extends Controller
         }
         $this->assign('bid',$bid);
         $this->assign('list',$list);
-        return $this->fetch();    
+                return $this->fetch();    
     }
 
     //上传图片用
@@ -118,11 +118,11 @@ class Index extends Controller
          $param =  Request::instance()->param();
          //dump($param);
          $this->assign('param',$param);
+
         return $this->fetch();
     }
     public function addbo()
     {   
-
         $picinfo = Request::instance()->param();
         $this->addpic();
     }
@@ -130,11 +130,18 @@ class Index extends Controller
     {
         $this->view->engine->layout(false);
         $info = Request::instance()->param(); 
-
-        $id = Adv::get($info['id']); 
-        $bid = $id->bid;
+        
+        if (array_key_exists(1,$info['path'])) {
+            $info['path'] = json_decode($info['path']);
+        } else {
+            $info['path'] = $info['path']['0'];
+        }
+        dump($info);
+        // $id = Adv::get($info['id']); 
+        // $bid = $id->bid;
         $res = $this->adv->uppic($info);
-        $this->redirect('admin/index/advpicturelist/bid/'.$bid);
+
+        //$this->redirect('admin/index/advpicturelist/bid/'.$bid);
     } 
     public function delpic()
     {

@@ -79,4 +79,52 @@ class Member extends Controller
             echo $file->getError();
         }              
     }
+    public function changepassword()
+    {
+		$this->view->engine->layout(false);
+		$uid= Request::instance()->param();
+		$info = $this->user->checkAll($uid['uid']);
+		$this->assign('info',$info);
+    	return $this->fetch();
+    }
+    public function change()
+    {
+    	$password= Request::instance()->param();
+    	$uid = $password['uid'];
+    	if ($password['newpassword'] != $password['newpassword2']) {
+    		return false;
+    	} else {
+    		$password = md5($password['newpassword']);
+    		$res = $this->user->passchange($uid,$password);
+    		if ($res) {
+    			return true;
+    		} else {
+    			return false;
+    		}
+    	}
+    }
+    public function ruandeluser()
+    {
+    	$uid=Request::instance()->param();
+    	$res = $this->user->ruandeluser($uid['uid']);
+    }
+    public function memberdel()
+    {
+    	$this->head->head();
+    	$delinfo = $this->user->checkdelete();
+    	//dump($delinfo);die;
+    	$this->assign('delinfo',$delinfo);
+    	return $this->fetch();
+    }
+    public function replay()
+    {
+    	$uid = Request::instance()->param();
+    	dump($uid);
+    	$this->user->replay($uid['uid']);
+    }
+    public function readydel()
+    {
+    	$uid = Request::instance()->param();
+    	$this->user->readydel($uid['uid']);
+    }
 }

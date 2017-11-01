@@ -20,7 +20,9 @@
   <div class='hero-image center'>
       <a  href='' >
     <picture>
-      <img alt="{$alt}" title="{$title}" src="{$path}"  >
+      {volist name = "adv" id = "v"}
+      <img alt="{$v.url}" title="{$v.title}" src="{$v.path}"  >
+      {/volist}
     </picture>
     </a>
   </div>
