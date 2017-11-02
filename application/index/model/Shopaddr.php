@@ -15,7 +15,6 @@ class Shopaddr extends Model
 
 	public function selAddr($uid)
 	{
-
 		return $this->where('uid',$uid)->select();
 	}
 }

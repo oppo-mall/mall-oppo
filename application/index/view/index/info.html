@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <title>『OPPO帐号』-个人信息</title>
+
+    <link rel="stylesheet" href="__CSS__common.css?r=20170503" />
+    </head>
+<body>
+<div class="wrapper">
+    <!--头部-->
+    <div class="header">
+        <div class="w960">
+             <ul class="menu_sec">
+                <li><a href="/index/index/index">OPPO官网</a></li>
+                <div class="clear"></div>
+            </ul>
+            <ul class="account_area">
+                <li class="hasLogin"><a class="quit_link">退出</a></li>
+             </ul>       
+            <div class="clear"></div>
+        </div>  
+    </div>
+    <div class="main_content">
+        <!--帐号信息-->
+        <ul class="account_info">
+            <li><label>OPPO帐号：</label><span>183******46</span></li>
+            <li><label>用户名：</label><span>未设置</span>
+                <span class="gray_tip"><em class="ico_edit"></em></span>
+                </li>
+            
+        </ul>  
+        <ul class="account_detail_area">
+            <li id="changepwd" class="account_row ">
+                <div class="row_left"></div>
+                <div class="row_middle">
+                    <h3>帐号密码</h3>
+                    <p class="small_info">用于保护帐号安全</p>
+                </div>
+                <a class="row_right modify_btn">修改</a>
+            </li>
+
+            <li id="changemobile" class="account_row  ">
+                <div class="row_left"></div>
+                <div class="row_middle">
+                    <h3>安全手机&nbsp;&nbsp;&nbsp;&nbsp;<em class="phoneNum">183******46</em></h3>
+                    <p class="small_info">安全手机可用于登录OPPO帐号，重置密码或其他安全验证<span>，<em class="orange_tip">建议立即绑定</em></span></p>
+                </div>
+                <a class="row_right modify_btn" link="reBindMobile">修改</a></li>
+
+            <li id="changeemail" class="account_row  unset">
+                <div class="row_left"></div>
+                <div class="row_middle">
+                    <h3>安全邮箱</h3>
+                   <p class="small_info">安全邮箱可用于登录OPPO帐号，重置密码或其他安全验证<span>，<em class="orange_tip">建议立即绑定</em></span></p>
+                   </div>
+                <a class="row_right set_btn" link="bindEmail">绑定</a></li>
+
+           
+            </ul>
+    </div>
+
+     <div class="footer_info">
+         <p>© 2005 - 2017 东莞市永盛通信科技有限公司 版权所有 粤ICP备08130115号-1</p>
+     </div>
+
+</div>
+
+
+<!--成功重置密码的气泡-->
+<div class="toast" id="success_toast"><img src="/resources/images/ico_success.jpg" /><span id="toast_content">已成功修改密码</span></div>
+
+<script src="/resources/js/jquery-1.9.1.min.js" ></script>
+<script src="/resources/js/jquery-md5-min.js" ></script>
+<script src="/resources/js/common.js?r=20170503" ></script>
+<script>
+    //javascript:window.history.forward(1);
+    function pointerY(event)
+    {
+        return event.pageY || (event.clientY + (document.documentElement.scrollTop || document.body.scrollTop));
+    }
+    
+
+    
+
+
+
+   
+    $("#fengx_num").html(parseInt($("#fengx_num").html()));
+</script>
+</body>
+</html>

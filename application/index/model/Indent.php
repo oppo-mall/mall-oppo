@@ -13,24 +13,51 @@ class Indent extends Model
 	{
 		$this->allowField(true)->save($indent_table);
 	}
-	//查商品清单
-	public function selList($uid)
+	
+	public function selDetails($uid,$getid)
 	{
-	  //return	Indent::join('ingoods','indent.oid=ingoods.oid','RIGHT')->select();
-		return Db::view('indent','oid,uid,count')
-			->view('ingoods',['uid','oid','price','quantity','color','img','configure','name','link','cid'],'indent.oid=ingoods.oid')
-			->where('uid',$uid)
-			->select();
+		return Db::view('indent','uid,oid,addr_id')
+				->view('ingoods',['oid','color','name','quantity'],'indent.oid=ingoods.oid')
+				->view('shopaddr',['addr_id','address_detail','receiver','tel'],'indent.addr_id=shopaddr.addr_id')
+				->where('uid',$uid)
+				->where('oid',$getid)
+				->select();
+	}
+	public function checkAll($uid)
+	{
+		return $this->where('uid',$uid)->select();
+	}
+	public function shopaddr()
+	{
+		return $this->hasOne('shopaddr','addr_id','id');
 	}
 	public function ingoods()
 	{
-		return $this->hasMany('Ingoods','oid');
-	}
-	public function checkuid($oid)
+		return $this->hasMany('ingoods','oid');
+	}	
+
+	public function bianli($uid)
 	{
-		return $this->where('oid',$oid)->find();
+
+		return Db::view('indent','*')
+			->view('shopaddr',['addr_id','receiver','tel','email','address_detail'],'indent.addr_id=shopaddr.addr_id')
+			->where('indent.uid',$uid)
+			->select();
+	}
+
+	public function goods($uid)
+	{
+
+		return Db::view('indent','*')
+			->view('ingoods',['oid','name','price','img','cid','color',],'indent.oid=ingoods.oid')
+			->where('indent.uid',$uid)
+			->select();
+	}
+
+	public function alreadyBuy($uid)
+	{
+		
 	}
 	
 }
 
-//订单表::join(‘订单商品表’，‘订单表.订单号=订单商品表.订单号’，‘LEFT’)->select()

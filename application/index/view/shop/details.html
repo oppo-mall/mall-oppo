@@ -177,19 +177,30 @@
   <div class="mask-common"></div>
   <div class="dialog-common dialog-box-common">
     <div class="dialog-container">
-      <a class="dialog-close-common">×</a>
+      <a class="dialog-close-common" href="">×</a>
       <div class="dialog-content-common">
         <div class="dialog-common-content color-primary">
           <div class="field">
-            <h3>加入购物车成功！</h3>
+            <h3>商品已成功加入购物车！</h3>
           </div>
           
+        </div>
+        <div class="y-modal-content" style="margin-left: 100px;">
+            
+            <div class="trade-action" style="width: 220px">
+                <a href="/index/shop/car" class="button button-primary">去结算</a>
+
+            </div>
+        </div>
+        <div class="l-modal-buttons" style="margin-left: 100px;margin-top: 10px;">
+           <div class="trade-action" style="width:220px">
+                 <a  href="/index/shop/shop" class="button">再逛逛</a>
+            </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-            
 
 </div>
     {else}
@@ -356,7 +367,7 @@
             <div class="reviews-switchable" id="comments-switchable">
                <!--  <input type="text" name=""> -->
             </div>
-            {if $uid && $res != null}
+            {if $uid && $res == null }
             <div class="comments-button">
                 <a class="button button-s" href="#comment-label"  onclick="say();" >我要评论</a>
             </div>

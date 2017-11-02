@@ -51,8 +51,8 @@ class Shop extends Controller
 		//dump($all);
 		$this->assign('all',$all);
 		//手机配件
-		$parts = $this->product->selParts();
-		$this->assign('parts', $parts);
+		/*$parts = $this->product->selParts();
+		$this->assign('parts', $parts);*/
 		//遍历购物车
 		 $car = $this->shopcar->selCar($uid)->toArray();
 		 //统计购物车数量
@@ -68,48 +68,41 @@ class Shop extends Controller
 
 	public function details()
 	{
+		
 		if (Session::has('uid')) {
 			$uid = Session::get('uid');
 			$user = Session::get('username');
 			$this->assign('user', $user);
-			
 		} else {
 			$uid = 0;
 		}
 		$this->assign('uid', $uid);
 		$pid = input('pid');
-		//$aid = input('aid');
-		$cid = input('cid');
-
+		//$cid = input('cid');
+		$this->assign('uid', $uid);
 		$this->assign('pid',$pid);
 		//$this->assign('cid', $cid);
-		//dump($pid);dump($aid);die;
 		if (empty($cid)) {
 			$cid = $this->protocom->checkcid($pid)->cid;
 		}
-
 		// 根据cid 找到pic 找所有的同类手机
 		$pname = $this->commodity->arraypid($pid);
-	
+		
 		foreach ($pname as $key => $value) {
 		 	$com = Commodity::find($value['cid']);
 			$attrs = $com ->attr->toArray();
 
 		}
-
 		//通过空数组保存参数属性
 		$color = [];
 		$link =[];
 		$configure = [];
 		$size = [];
-		
+		//$com  = Commodity::find(5);
 		$com = Commodity::all(['pid'=>$pid]);
-
 		foreach ($com as $key => $value) {
 			$attr = $value->attr->toArray();
-					
 			foreach ($attr as $key => $value) {
-
 				switch ($value['type']) {
 					case '0':
 						if (!in_array($value['attrname'],$color)) {
@@ -129,22 +122,14 @@ class Shop extends Controller
 							$configureaid[] = $value['aid'];
 						}
 						break;
-					case '3':
-						if (!in_array($value['attrname'],$size)) {
-							array_push($size, $value['attrname']);
-							$sizeaid[] = $value['aid'];
-						}
-						break;
+					
 				}
 			}	
 
 		}
-	
 		$color = array_combine($coloraid,$color);
 		$link = array_combine($linkaid,$link);
-			/*if (empty($size)) {
-				$size = array_combine($sizeaid,$size);
-			}*/
+		
 		
 		$configure = array_combine($configureaid,$configure);
 		$this->assign('color',$color);
@@ -180,6 +165,7 @@ class Shop extends Controller
 
 		//用户是否已经评论过
 		$res = $this->comment->selIscomment($uid)->toArray();
+
 		$this->assign('res', $res);
 		$pname = $this->product->selRes()->toArray()[0]['pname'];
 		//dump($pname);
@@ -205,8 +191,30 @@ class Shop extends Controller
 
 	public function car()
 	{
-		 $user = Session::get('username');
-		 $this->assign('user', $user);
+		
+		 $uid = Session::get('uid');
+		 $pid = input('pid');
+		 $this->assign('pid',$pid);
+		 $this->assign('uid',$uid);
+		 //遍历购物车
+		 $car = $this->shopcar->selCar($uid)->toArray();
+		 //统计购物车数量
+		 $count = count($car);
+		 //统计总价
+		 $sum = $this->shopcar->selSum($uid);
+
+		 $this->assign('car', $car);
+		 $this->assign('count', $count);
+		 $this->assign('sum', $sum);
+
+		//查推荐机型
+		$groom = $this->grooms->selGroom();
+		$this->assign('groom', $groom);
+
+		return  $this->fetch();
+	}
+	public function indent()
+	{
 		 $uid = Session::get('uid');
 		 $pid = input('pid');
 		 $this->assign('pid',$pid);
@@ -225,22 +233,26 @@ class Shop extends Controller
 		 //查收货地址
 		 $addr = $this->address->selAddr($uid)->toArray();
 		 $this->assign('addr',$addr);
-
-		 //查商品清单
-		//$list = Ingoods::where('uid',$uid)->select()->toArray();
-	 	 $list = $this->indent->selList($uid)->toArray();
-		 $countlist = count($list);
-		 //dump($list);
-		$this->assign('list',$list);
-		$this->assign('countlist',$countlist);
 		//查推荐机型
 		$groom = $this->grooms->selGroom();
 		$this->assign('groom', $groom);
-		//
-
+		// 找出订单oid
+		$indentid = Indent::field('id,oid')->order('id desc')->find()->toArray();
+		
+		$oid = $indentid['oid'];
+		$this->assign('oid',$oid);
+		//查商品清单
+		$list = Ingoods::where('oid',$oid)->select()->toArray();
+		//	订单总价
+		$total = Ingoods::where('oid',$oid)->sum('price');
+		$this->assign('total',$total);
+		//订单数量
+ 		$countlist = count($list);
+ 		$this->assign('countlist',$countlist);
+		$this->assign('list',$list);
 		return  $this->fetch();
 	}
-
+	//购物车ajax加入订单
 	public function insIndent()
 	{
 		$data = Request::instance()->param();
@@ -268,23 +280,63 @@ class Shop extends Controller
 		//插入订单商品表
 		$this->goods->saveAll($igoods);
 		
-
-
-		$indentuid = Indent::where('oid',$oid);
-		$res = $indentuid->ingoods;
-			dump($indentuid);
-		dump($res);
-		//return $oid;
-		//return $oid;
+		return $oid;
 		
 	}
-	
-	public function payfor()
+	//提交订单
+	public function subIndent()
 	{
 		$data = Request::instance()->param();
-		dump($data);
+		//dump($data);
+		//更新订单表
+		$this->indent->allowField(true)->save($_POST,['oid' => $data['oid']]);
+		$this->goods->save(['is_pay'=>0],['oid' => $data['oid']]);
+	}
 
-		//$user->allowField(true)->save($_POST,['oid' => $oid]);
+
+	public function payfor()
+	{
+		
+		 $uid = Session::get('uid');
+		 $pid = input('pid');
+		 $this->assign('pid',$pid);
+		 $this->assign('uid',$uid);
+		 //oid
+		 $getid = input('param.getid');
+		 $this->assign('getid',$getid);
+		 //总价
+		 $total = Ingoods::where('oid',$getid)->sum('price');
+		 $this->assign('total',$total);
+		 //订单详情
+		 $details = $this->indent->selDetails($uid,$getid)->toArray();
+		 //dump($details);
+		 $this->assign('details',$details);
+		//遍历购物车
+		 $car = $this->shopcar->selCar($uid)->toArray();
+		 //统计购物车数量
+		 $count = count($car);
+		  $this->assign('car', $car);
+		 $this->assign('count', $count);
+		//查推荐机型
+		$groom = $this->grooms->selGroom();
+		$this->assign('groom', $groom);
+		return  $this->fetch();
+	}
+
+
+	public function subPay()
+	{
+		$data = Request::instance()->param();
+		 $getid = input('param.getid');
+
+		$this->indent->save(['is_pay'=>1],['oid' =>  $getid]);
+	}
+
+	public function delCar()
+	{
+		$data = Request::instance()->param();
+		
+		Shopcar::destroy($data['id']);
 	}
 }
 

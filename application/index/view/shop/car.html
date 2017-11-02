@@ -68,7 +68,7 @@
               </ul>
               <div class='brick-shadow purchase-list'>
                 {foreach $car as $key => $value} 
-                <input type="checkbox" id="{$value['id']}"  name="input[]" value="{$value['id']}" class="checkadd" >
+                <input type="checkbox"   name="input[]" value="{$value['id']}" class="checkadd" >
                 <div class="cart-product cart-product-l cart-product-bd2316302acb95488694614dba2c704a  ">
              
             <div class="cart-product-choice">
@@ -101,9 +101,30 @@
                     <span class="hidemoney{$value['id']}" value="{$value['price']}"></span>
                                             <span class='normal'>￥ <span class="price{$value['id']} allprice">{$value['price']}</span> .00</span>
                                     </div>
-                <div class='cart-product-delete cart-product-delete-word' data-id='bd2316302acb95488694614dba2c704a'>删除</div>
+                <div class='cart-product-delete cart-product-delete-word' id="{$value['id']}" >删除</div>
                 <span class='cart-product-delete cart-product-delete-icon icon icon-close-circle' data-id='bd2316302acb95488694614dba2c704a'></span>
             </div>
+            <script type="text/javascript">
+       $("#{$value['id']}").click(function () {
+        var id = $(this).attr('id');
+         $.ajax({
+          type:"post",    
+          url:"/index/shop/delCar",    
+          dataType: 'json',
+          async : true,
+          data: {id:id}, 
+          success:del
+        });
+         function del(data)
+         {
+          //console.log(data); 
+         
+         }
+          window.location.reload();
+       // $("$addrlist"+addr_id).empty();
+      })
+
+</script>
             <script type="text/javascript">
               /*+号*/
                 $("#sum{$value['id']}").click(function () {
@@ -166,180 +187,9 @@
               </div>
 </div>
 
-<!-- 填写订单 -->
-<div class="brick-bottom" style="display: none;" id="dingdanye">
-    
-                <form id="order-create-form" class="g">
-
-          <div class="gi one-whole slab-white-border" >
-            <div class="delivery-header">
-              <h1 class="h-epsilon">选择配送方式:</h1>
-</div>
-            <div class="brick-shadow" >
-              {foreach $addr as $value}
-              <div class="field radio-item  xl  brick-shadow1 " id="addrlist{$value['id']}">
-                  <input type="hidden" name="addrid" class="address-form-receiver" value="{$value['id']}">
-                  <input id="radio{$value['id']}" name="address" type="radio" class="radio checked_radio" value="{$value['id']}">
-                    <label for="radio{$value['id']}">
-                      <div class="g address-form-content">
-                        <div class="gi desk-one-fifth one-whole title">{$value['receiver']}</div>
-                        <div class="gi desk-one-fifth one-whole">{$value['tel']}</div>
-                        <div class="gi desk-one-fifth one-whole">{$value['email']}</div>
-                        <div class="gi desk-two-fifths one-whole">{$value['address_detail']}</div>
-                      </div>
-                    <span class="addrid" value=""></span>
-                    </label>
-                </div>
-                  <script type="text/javascript">
-                    $("#radio{$value['id']}").click(function () { 
-                      //console.log($(this).attr('value'));
-                      $('.addrid').attr('value',$(this).attr('value'))
-                    })
-                  </script>
 
 
-              {/foreach}                       
-                   <p class="field">
-                <a href="javascript:;" id="address_new" class="button-light">添加新地址</a>
-                </p><div class="js-content address-form-new" id="addr" style="display:none;">
-                  <div id="address-create" class="g">
-              
-  <div class="gi field lap-one-whole desk-one-quarter">
-    <label>*收货人姓名</label>
-    <input type="text" id="receiver">
-  </div>
-  <div class="g">
-    <div class="gi field lap-one-whole desk-one-quarter">
-      <label>*手机号码</label>
-      <input type="text" id="tel">
-    </div>
-  </div>
-    <div class="g field">
-  <label>*收货地址</label>
-
-  <div class="g">
-   
-
-</div>
-<div data-toggle="distpicker">
-  <select id="province" data-province="---- 选择省 ----" style="width: 150px;height: 65px;"  name="province"></select>
-  <select id="city" data-city="---- 选择市 ----" style="width: 150px;height: 65px;"  name="city"></select>
-  <select id="county" data-district="---- 选择区 ----" style="width: 150px;height: 65px;"  name="county"></select>
-</div>
-  
-  </div>
-  <div class="g">
-    <div class="gi desk-two-thirds one-whole">
-      <input class="address-detail" type="text" id="address_detail" value="" placeholder="详细街道地址">
-    </div>
-  </div>
-</div>
-  <div class="g">
-    <div class="gi field lap-one-whole desk-one-quarter">
-      <label>联系邮箱</label>
-      <input type="text" id="email">
-    </div>
-  </div>
-  <div class="form-actions">
-    <div class="pull-left">
-      <a class="button-light pull-left address-store" id="save">保存</a>
-      <a class="button-light pull-left address-new-cancel" id="cancel">取消</a>
-    </div>
-  </div>
-</div>
-                </div>
-<div class="brick-shadow">
-
-<input type="hidden" id="oid" value="">
-                        <div class="brick-shadow" id="payment_method_filed">
-              <h3 class="h-epsilon">支付方式:</h3>
-              <div class="field radio-item payment_method_online">
-                                      <!--   <span class="radio webkit webkit59 not_msie custom-form_payment_method_radio0 checked_radio">
-                                          <input id="payment_method_radio0" name="payment_method_radio" type="radio" value="0" data-fee="0">
-                                        </span> -->
-                                         <input  type="radio" class="radio checked_radio" value="" id="payway">
-                    <label for="payment_method_radio0">
-                      <span class="main">
-                        在线支付
-                      </span>
-                    </label>
-                  </div>
-            
-
-                            <div class="g-hide">
-               
-
-              </div>
-            </div>
-            
-                          <div class="brick-bottom" >
-          <div class="slab-white opr-detail">
-       
-       <div class="brick-shadow">
-                          <h4>商品清单：</h4>
-                  {foreach $list as $value}
-                            <div class="goods-list">
-                <div class="goods-list-show">
-                  <a class="goods-list-image" href="" target="_blank">
-                    
-                  </a>
-                </div>
-                <div class="goods-list-detail">
-                  <div class="goods-list-info goods-list-main">
-                    <div class="goods-list-description">
-                      <h4 class="heading">
-                        <a href="" target="_blank">{$value['name']} {$value['color']}</a>
-                      </h4>
-                      <p>{$value['color']}|{$value['link']}|{$value['configure']}</p>
-                    </div>
-                    <div class="goods-list-quantity"><strong>×{$value['quantity']}</strong></div>
-                    <div class="goods-list-price"><strong>￥
-                                        {$value['price']}.00
-                                        </strong></div>
-                  </div>
-                                    <div class="goods-list-info"> 
-                    <div class="goods-list-quantity"><br/></div>
-                  </div>
-                </div>
-                {/foreach}
-              </div>
-           </div>
-      </div>
-
-        
-                        <div class="brick-shadow fee-list">
-            
-              <ul>
-                <li>
-                  <span class="fee-list-title">商品数量：</span>
-                  <span class="fee-list-data">{$countlist}</span>
-                </li>
-                <li>
-                  <span class="fee-list-title">合计：</span>
-                  <span class="fee-list-data" id="trade_total_fee">￥<font>2799.00</font></span>
-                </li>
-              
-                                <li>
-                    <span class="fee-list-title">邮费（<font color="color_red">全场包邮</font>）：</span>
-                  <span class="fee-list-data" id="shipping_fee_price">+ ￥0.00</span>
-                </li>
-              
-                <li>
-                  <span class="fee-list-title">应付金额：</span>
-                                      <span class="fee-list-data fee-list-amount" id="amount_fee_price">￥2799.00</span>
-                                  </li>
-                              </ul>
-            </div>
-
-            <div class="form-actions brick-shadow right-text">
-                                  <a class="button cart-button" id="sureorder">提交订单</a>
-            </div>
-          </div>
-
-        </form>
-      </div>
-
-   </div></form></div>   
+   </div>   
 
 
       
@@ -354,58 +204,8 @@
 </div>
 
     </main> 
-      <main class='main-content slab-light'>
 
-  <!-- 支付页面 -->
-<div class="brick-bottom" style="display: block" id="payfor">
-    <div class="slab-white opr-detail">
-        <div class="g">
-          <div class="gi desk-two-thirds one-whole">
-            <div class="opr-title">订单提交成功！</div>
-
-            <div class="opr-text">订单号为 <i>171031136728865</i>，                请您在提交订单后<span class="alert-danger">48</span>小时内付款（逾期订单将自动取消）。</div>
-          </div>
-          <div class="gi desk-one-third one-whole opr-prices">
-            <div class="opr-price">应付金额：<span>￥2999.00</span></div>
-            <div class="opr-order-detail"><a href="javascript:;" class="oppo-tj" data-tj="store|link|order|detail">订单详情&nbsp;<span class="icon icon-arrow-down-green"></span></a></div>
-          </div>
-        </div>
-        <div class="opr-order-details" style="display: none">
-          <p><label>商品清单：</label></p>
-                                          <p>R11 热力红  旗舰爆款<span>x</span><span>1</span></p>
-                               <p>蓝牙音箱Q9<span>x</span><span>1</span></p> <p>
-                        陕西省西安市新城区胡家庙街道jdafjaoejfds &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          我去
-              （13412345677） </p>
-        </div>
-      </div>
-                                                      <!--支付宝支付-->
-                    <div class="gi one-whole">
-  <div class="field radio-item pay dark xl" style="display: block;">
-  <!--   <span class="radio webkit webkit59 not_msie custom-form_radio_alipay">-->
-     <!--  <input class="parent_radio oppo-tj" id="radio_alipay" name="payonline_category" code="alipay" type="radio" bankcode="directpay" >  -->
-      <input id="radio_alipay" name="payonline_category" type="radio" class="radio webkit webkit59 not_msie custom-form_radio0 checked_radio" checked="">
-   <!--  </span> -->
-  <!--   <label for="radio_alipay">
-      <img alt="" src="https://shopfs.myoppo.com/shop/assets/images/payments/alipay_logo.png">
-    </label> -->
-    
-  </div>
-</div>  
-
-  <div class="opr-btn-pay">
-            <div class="g">
-              <div class="gi desk-three-quarters">
-                <p class="error_msg_note">
-                                  </p>
-              </div>
-              <div class="gi desk-one-quarter">
-                <a class="button cart-button oppo-tj button-disabled" id="pay_action" href="javascript:;" data-tj="store|btn|order|lijizhifu">立即支付</a>
-              </div>
-            </div>
-          </div>
-</div>
-      </main>
+  
     <div id='dialog-confirm' class='hidden'>
 			<div class="mask-common"></div>
 			<div class="dialog-common dialog-box-common">
@@ -434,17 +234,16 @@
 			<div class="mask-common"></div>
 			<div class="dialog-common dialog-box-common">
 				<div class="dialog-container">
-					<a class="dialog-close-common">×</a>
 					<div class="dialog-content-common">
 												<div class="field">
-							<h4 class='dialog-title-common'>.</h4>
+							<h4 class='dialog-title-common'>没有可结算的商品</h4>
 						</div>
 																		<div class="dialog-common-content">
 												</div>
 																		<div class="field dialog-btn">
 							<div class="g g-wrapper-s">
 								<div class="gi lap-one-whole">
-									<a class='button button-one-whole'>确定</a>
+									<a id="sure" class='button button-one-whole'>确定</a>
 								</div>
 							</div>
 						</div>
@@ -464,13 +263,7 @@
         <div class="purchase-advisory">
         
     </div>
- <script type="text/javascript">
-   $('#payway').click(function () {
-     $('#payway').attr('checked','checked');
-      $('#payway').attr('value','1');
-     //console.log($('#payway').attr('value'))
-   })
- </script>   
+ 
 
 <script type="text/javascript">
   var all = document.getElementById('xz');
@@ -520,117 +313,22 @@ $('.checkadd').click(function(){
     });
      function addorder(data)
      {
-      //console.log(data);
-      $('#oid').attr('value',data);
-     }
-     var ding = document.getElementById('dingdan');
-     ding.className = 'two active step-completed';
-     var dingdan = document.getElementById('dingdanye');
-     dingdan.style.display = 'block';
-     var buycar = document.getElementById('gouwuche');
-     buycar.style.display = 'none';
+      
+      window.location.href="/index/shop/indent"; 
+      
+     } 
+
     } else{
-      alert('没有可结算的商品')
+      $('#dialog-error-msg').removeClass('hidden');
     }
     
   });
  
-</script>
-<script type="text/javascript">  
-$('#address_new').click(function () {
-  var addr = document.getElementById('addr');
-
-  addr.style.display = 'block';
-});
-
-$('#cancel').click(function () {
-  var addr = document.getElementById('addr');
-  addr.style.display = 'none';
-});
-
- var province = document.getElementById('province');
-  province.onchange = function () {
-    console.log(province.options[province.selectedIndex].value);
-    $('#province').attr('data-province',province.options[province.selectedIndex].value);
-  };
-  var city = document.getElementById('city');
-  city.onchange = function () {
-    console.log(city.options[city.selectedIndex].value);
-    $('#city').attr('data-city',city.options[city.selectedIndex].value);
-  };
-
- var county = document.getElementById('county');
-  county.onchange = function () {
-    console.log(county.options[county.selectedIndex].value);
-    $('#county').attr('data-district',county.options[county.selectedIndex].value);
-  };
-$('#save').click(function () {
-    var uid = {$uid};
-    var receiver = $('#receiver').val();
-    var tel = $('#tel').val();
-    var email = $('#email').val();
-    var address_detail = $('#address_detail').val();
-    var province = $('#province').attr('data-province');
-    var city = $('#city').attr('data-city');
-    var county = $("#county").attr('data-district');
-    $.ajax({
-      type:"post",    
-      url:"/index/address/address",    
-      dataType: 'json',
-      async : true,
-      data: {uid:uid,receiver:receiver,tel:tel,email:email,address_detail:address_detail,province:province,city:city,county:county}, 
-      success:address 
-    });
-     function address(data)
-     {
-       var addr = document.getElementById('addr');
-        addr.style.display = 'none';
-        $('.brick-shadow1:last').append(' <div class="field radio-item dark xl address_list_0 brick-shadow1">                  <input type="hidden" class="address-form-receiver" value="我去">       <input type="hidden" class="address-form-mobile" value="13412345677">        <input type="hidden" class="address-form-email" value="123141@qq.com">                  <input type="hidden" class="address-form-address" value="jdafjaoejfds">                  <span class="radio webkit webkit59 not_msie custom-form_radio0 checked_radio"><input id="radio0" name="address" type="radio" value="1700056" checked=""></span>                    <label for="radio0">                      <div class="g address-form-content">                        <div class="gi desk-one-fifth one-whole title">' + receiver + '</div>                        <div class="gi desk-one-fifth one-whole">'+ tel + '</div>  <div class="gi desk-one-fifth one-whole">'+email+'</div><div class="gi desk-two-fifths one-whole">'+address_detail+'</div></div><div class="links"></div></label></div>')
-     }
-
-});
+ $('#sure').click(function () {
+   $('#dialog-error-msg').addClass('hidden');
+ })
 </script>
 
-<script type="text/javascript">
-  $('#sureorder').click(function () {
-    if ($('#payway').attr('value') != '1') {
 
-      if ($("input[name='address']").attr('checked') != true) {
-        alert('必须先选择收货地址和支付方式')
-      }
-    } else {
-      
-       var addr_id =  $('.addrid').attr('value');
-    
-    var oid =  $('#oid').attr('value');
-
-    $.ajax({
-      type:"post",    
-      url:"/index/shop/payfor",    
-      dataType: 'json',
-      async : true,
-      data: {addr_id:addr_id,oid:oid}, 
-      success:zhifu 
-    });
-     function zhifu(data)
-     {
-      console.log(data);
-     }
-     var ding = document.getElementById('dingdan');
-     ding.className = 'two active step-completed';
-     var dingdan = document.getElementById('dingdanye');
-     dingdan.style.display = 'none';
-     var buycar = document.getElementById('gouwuche');
-     buycar.style.display = 'none';
-     var payfor = document.getElementById('zhifu');
-     payfor.className = 'three active step-completed';
-     var money = document.getElementById('payfor');
-     money.style.display = 'block';
-   }
-    
-  });
-    
-   
-</script>
   </body>
 </html>

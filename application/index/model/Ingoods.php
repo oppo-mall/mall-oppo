@@ -11,6 +11,16 @@ class Ingoods extends Model
 	protected $deleteTime = 'delete_time';
 	public function indent()
 	{
-		return $this->belongTo('indent');
+		return $this->belongsTo('indent');
+	}
+
+	public function picture($uid)
+	{
+
+		return Db::view('ingoods','cid')
+			->view('imgd',['cid','path_url'],'ingoods.cid=imgd.cid')
+			->where('uid',$uid)
+			//->distinct(true)
+			->select();
 	}
 }

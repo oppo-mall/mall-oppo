@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class='no-js'>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EDGE" />
+    <meta content='width=device-width,initial-scale=1, user-scalable=no' name='viewport'>
+    <title>『OPPO智能手机个人首页』OPPO手机个人最新动态|历史记录查询-OPPO智能手机官网 </title>
+   <link media="all" type="text/css" rel="stylesheet" href="__CSS__styles_6.css?v=2017010100032">
+   
+       <script src="__JS__jquery-1.9.1.min.js"></script>
+
+    <script src="__JS__jquery.lazyload.min.js"></script>    
+    <script src="__JS__jquery.countdown.min.js"></script>
+    <script src="__JS__pkg-detail-f23a56f.js"></script>
+    <script src="__JS__modernizr.custom.js"></script>
+    <script src="__JS__distpicker.js"></script>
+
+          </head>
+  <body>
+ {include file="/index/header" /}
+      <main class='main-content user'>
+
+    <div class='wrapper'>
+      <ul class='breadcrumb'>
+  <li>
+    <a href='/index/index/index'>
+      首页
+      <span>/</span>
+    </a>
+  </li>
+            <li>
+                  配送地址
+              </li>
+      </ul>
+      <div class='myOppo-menu'>
+  <h1 class='h-gamma'>配送地址</h1>
+  <ul class='navigation'>
+    <li class=''>
+      <a href='/index/index/myoppo'>我的订单</a>
+    </li>
+    <li class='is-active'>
+      <a href='/index/index/address'>配送地址</a>
+    </li>
+    
+    <li>
+      <a href='/index/index/info'>账户信息</a>
+    </li>
+              </ul>
+</div>
+      <div class="row">
+        <div class="col-md-12">
+        <div class="alert alert-danger" role="alert">
+          <ul class="list-unstyled">
+            <strong class='error_msg_note'>
+            </strong>
+          </ul>
+        </div>
+        </div>
+      </div>
+      <form class='g'>
+  <div class='gi one-whole'>
+  	            <div class="brick-shadow" >
+              {foreach $addr as $value}
+              <div class="field radio-item  xl  brick-shadow1 " id="addrlist{$value['addr_id']}">
+                  <input type="hidden" name="addrid" class="address-form-receiver" value="{$value['addr_id']}">
+                  <input id="radio{$value['addr_id']}" name="address" type="radio" class="radio checked_radio" value="{$value['addr_id']}">
+                    <label for="radio{$value['addr_id']}">
+                      <div class="g address-form-content">
+                        <div class="gi desk-one-fifth one-whole title">{$value['receiver']}</div>
+                        <div class="gi desk-one-fifth one-whole">{$value['tel']}</div>
+                        <div class="gi desk-one-fifth one-whole">{$value['email']}</div>
+                        <div class="gi desk-two-fifths one-whole">{$value['address_detail']}</div>
+                      </div>
+                    <span class="addrid" value=""></span> 
+                    <div class="links">
+                  <a  class="remove-address" id="{$value['addr_id']}">删除</a>
+                </div>
+                    </label> 
+
+                </div>
+
+                  <script type="text/javascript">
+                    $("#radio{$value['addr_id']}").click(function () { 
+                      //console.log($(this).attr('value'));
+                      $('.addrid').attr('value',$(this).attr('value'))
+                    })
+                  </script>
+<script type="text/javascript">
+       $("#{$value['addr_id']}").click(function () {
+        var addr_id = $(this).attr('id');
+         $.ajax({
+          type:"post",    
+          url:"/index/index/delAddr",    
+          dataType: 'json',
+          async : true,
+          data: {addr_id:addr_id}, 
+          success:del
+        });
+         function del(data)
+         {
+          //console.log(data); 
+         
+         }
+          window.location.reload();
+       // $("$addrlist"+addr_id).empty();
+      })
+
+</script>
+
+              {/foreach}                       
+                   <p class="field">
+                <a href="javascript:;" id="address_new" class="button-light">添加新地址</a>
+                </p><div class="js-content address-form-new" id="addr" style="display:none;">
+                  <div id="address-create" class="g">
+              
+  <div class="gi field lap-one-whole desk-one-quarter">
+    <label>*收货人姓名</label>
+    <input type="text" id="receiver">
+  </div>
+  <div class="g">
+    <div class="gi field lap-one-whole desk-one-quarter">
+      <label>*手机号码</label>
+      <input type="text" id="tel">
+    </div>
+  </div>
+    <div class="g field">
+  <label>*收货地址</label>
+
+  <div class="g">
+   
+
+</div>
+<div data-toggle="distpicker">
+  <select id="province" data-province="---- 选择省 ----" style="width: 150px;height: 65px;"  name="province"></select>
+  <select id="city" data-city="---- 选择市 ----" style="width: 150px;height: 65px;"  name="city"></select>
+  <select id="county" data-district="---- 选择区 ----" style="width: 150px;height: 65px;"  name="county"></select>
+</div>
+  
+  </div>
+  <div class="g">
+    <div class="gi desk-two-thirds one-whole">
+      <input class="address-detail" type="text" id="address_detail" value="" placeholder="详细街道地址">
+    </div>
+  </div>
+</div>
+  <div class="g">
+    <div class="gi field lap-one-whole desk-one-quarter">
+      <label>联系邮箱</label>
+      <input type="text" id="email">
+    </div>
+  </div>
+  <div class="form-actions">
+    <div class="pull-left">
+      <a class="button-light pull-left address-store" id="save">保存</a>
+      <a class="button-light pull-left address-new-cancel" id="cancel">取消</a>
+    </div>
+  </div>
+</div>
+                </div>
+   
+    </div>
+  </div>
+</form>
+    </div>
+  </main>
+{include file="/index/footer" /}
+    
+    <div class='navi-scroll'>
+  <div class="navi-scroll-content">
+    <a href="javascript:;" class="scroll-top-btn"><span>回到顶部</span><i></i></a>
+      </div>
+</div>
+<!-- 添加收货地址显示 -->
+<script type="text/javascript">  
+$('#address_new').click(function () {
+  var addr = document.getElementById('addr');
+
+  addr.style.display = 'block';
+});
+/*取消添加*/
+$('#cancel').click(function () {
+  var addr = document.getElementById('addr');
+  addr.style.display = 'none';
+});
+/*省 市 区值获取*/
+ var province = document.getElementById('province');
+  province.onchange = function () {
+    console.log(province.options[province.selectedIndex].value);
+    $('#province').attr('data-province',province.options[province.selectedIndex].value);
+  };
+  var city = document.getElementById('city');
+  city.onchange = function () {
+    console.log(city.options[city.selectedIndex].value);
+    $('#city').attr('data-city',city.options[city.selectedIndex].value);
+  };
+
+ var county = document.getElementById('county');
+  county.onchange = function () {
+    console.log(county.options[county.selectedIndex].value);
+    $('#county').attr('data-district',county.options[county.selectedIndex].value);
+  };
+  /*保存收货地址*/
+$('#save').click(function () {
+    var uid = {$uid};
+    var receiver = $('#receiver').val();
+    var tel = $('#tel').val();
+    var email = $('#email').val();
+    var address_detail = $('#address_detail').val();
+    var province = $('#province').attr('data-province');
+    var city = $('#city').attr('data-city');
+    var county = $("#county").attr('data-district');
+    $.ajax({
+      type:"post",    
+      url:"/index/address/address",    
+      dataType: 'json',
+      async : true,
+      data: {uid:uid,receiver:receiver,tel:tel,email:email,address_detail:address_detail,province:province,city:city,county:county}, 
+      success:address 
+    });
+     function address(data)
+     {
+       var addr = document.getElementById('addr');
+        addr.style.display = 'none';
+        $('.brick-shadow1:last').append(' <div class="field radio-item dark xl address_list_0 brick-shadow1">        <input id="radio0" name="address" type="radio" class="radio checked_radio" value="">  <label for="radio0">                      <div class="g address-form-content">                        <div class="gi desk-one-fifth one-whole title">' + receiver + '</div>                        <div class="gi desk-one-fifth one-whole">'+ tel + '</div>  <div class="gi desk-one-fifth one-whole">'+email+'</div><div class="gi desk-two-fifths one-whole">'+address_detail+'</div></div><div class="links"></div></label></div>')
+     }
+
+});
+</script>
+    
+
+
+  </body>
+</html>

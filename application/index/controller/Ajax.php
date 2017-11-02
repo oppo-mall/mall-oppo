@@ -65,12 +65,8 @@ class ajax extends Controller
 	{
 		$aid= Request::instance()->param()['aid'];
 		$pid= Request::instance()->param()['pid'];
-		//$aid = input('aid.coloraid');
 		
 		return $attr = $this->coloraid->color($aid,$pid)->toArray();
-
-		//dump($attr);
-		
 	}
 	function money() 
 	{
@@ -82,55 +78,7 @@ class ajax extends Controller
 		return $attr[0]['money'];
 	}
 
-/*
-	function remove()
-	{
-		$id= Request::instance()->param();
-		$aid = $id['aid'];
-		$pid = $id['pid'];
-		$cid = [];
-		$com = Comtoattr::all(['aid'=>$aid,'pid'=>$pid])->toArray();
-		foreach ($com as $key => $value) {
-			$cid[] = $value['cid'];
-		}
-		//dump($cid);三位数组
-		foreach ($cid as $key => $value) {
-			$res[]= $this->commod->selCommod($value)->toArray();
 
-		}
-		//二维数组
-		foreach ($res as $k => $val) {
-			$res[$k] = $val['0'];
-		}
-		foreach ($res as $keys => $values) {
-			$attrid[$keys] = $values['attrid'];
-		}
-		//dump($attrid);
-		$attr=[];
-		foreach ($attrid as $key => $value) {
-			$res= trim($value,'{');
-			$res = trim($res,'}');
-			$res = str_replace(':', "", $res);
-			$res = explode(",", $res);
-			
-			foreach ($res as $k => $val) {
-				$attr[]= $this->attr->findattr($k,$val)->toArray();		
-			}
-		}
-
-		foreach ($attr as $key => $value) {
-			$attr1[$key] = $value[0]['attrname'];
-			$kattr[] = $value[0]['aid'];
-		}
-		//$attr = implode(',',$attrid);
-		$att =array_chunk($attr1, 3,true);
-		$ktt = array_chunk($kattr, 3);
-		foreach ($att as $key => $value) {
-			$end[] = array_combine($ktt[$key], $att[$key]);
-		}
-		return $end;
-	}
-*/
 	function selStock()
 	{
 		$id= Request::instance()->param();

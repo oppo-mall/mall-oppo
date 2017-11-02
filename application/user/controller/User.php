@@ -90,7 +90,7 @@ class User extends Controller
 				$this->error('登录失败');
 			}
 
-		}
+		}   
 	}
 
 
