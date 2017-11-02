@@ -7,6 +7,14 @@ class Category extends Model
 {
 	public function checkAll()
 	{
+		return $this->where('id',1)->select();
+	}
+	public function check()
+	{
 		return $this->select();
+	}
+	public function add($res)
+	{
+		return $this->allowField(true)->save();
 	}
 }

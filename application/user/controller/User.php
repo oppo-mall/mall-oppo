@@ -78,6 +78,7 @@ class User extends Controller
 				// Session::set('gold',$userinfo['gold']);
 				Session::set('icon',$userinfo['icon']);
 				Session::set('nickname',$userinfo['nickname']);
+				Session::set('udertype',$userinfo['udertype']);
 				if ($userinfo['udertype'] == 1) {
 					$this->success('管理员登录成功','index/index/index');
 				} elseif ($userinfo['udertype'] == 2) {
@@ -91,6 +92,9 @@ class User extends Controller
 
 		}
 	}
+
+
+	
 
 	public function logout()
 	{

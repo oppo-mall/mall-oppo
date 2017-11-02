@@ -8,9 +8,12 @@ use app\admin\model\Category;
 use app\admin\model\Product as pro;
 use app\admin\model\commodity;
 use app\admin\model\Attr;
-use app\admin\model\imgp;
-use app\admin\model\imgd;
+use app\admin\model\Imgp;
+use app\admin\model\Imgd;
 use app\admin\model\Comtoattr;
+use app\admin\model\Protocom;
+use app\admin\model\Img;
+use think\Db;
 /**
 * 
 */
@@ -28,6 +31,8 @@ class Product extends Controller
         $this->imgp = new imgp();
         $this->imgd = new imgd();
         $this->comtoattr = new Comtoattr();
+        $this->protocom  = new Protocom();
+        $this->img = new Img();
 
 	}
 	public function productlist()
@@ -41,14 +46,16 @@ class Product extends Controller
 			$pidproduct = Commodity::all('pid',$post['pid']);
 		}
 
-		
 		foreach ($pidproduct as $key => $value) {
 			$attr[] = $value->attr->toArray();
 		}
-
+    if (empty($attr)) {
+      return $this->fetch();
+    }
 		foreach ($attr as $key => $value) {
 			foreach ($value as $k => $val) {
 				$com = Commodity::get($val['pivot']['cid']);
+        $cid = $com->cid;
 				$pname = $com->pname;
 				$stock = $com->stock;;
 				$money = $com->money;
@@ -56,9 +63,12 @@ class Product extends Controller
 				$attr[$key]['pivot'] = $pname;
 				$attr[$key]['stock'] = $stock;
 				$attr[$key]['money'] = $money;
+        $attr[$key]['cid'] = $cid;
 			}
 		}
+    //dump($attr);die;
 		// $this->assign('pidproduct',$pidproduct);
+    $this->assign('count',count($attr)); 
 		$this->assign('attr',$attr);
 		return $this->fetch();
 	}
@@ -72,6 +82,8 @@ class Product extends Controller
 
 		$pidproduct = $this->product->productshow($series);
 		$this->assign('pidproduct',$pidproduct);
+    $count = count($this->product);
+    $this->assign('count',count($count));
 		return $this->fetch();
 	}
 	public function productcategoryadd()
@@ -149,7 +161,8 @@ class Product extends Controller
   // foreach ($att as $key => $value) {
   //  $end[] = array_combine($ktt[$key], $att[$key]);
   // }
-		$data = $this->category->checkAll();
+		$data = $this->category->check();
+    $this->assign('count',count($data));
 		$this->assign('data',$data);
 		return $this->fetch();
 	}
@@ -193,7 +206,7 @@ class Product extends Controller
     	$list =$data['list'];
    		$attr = implode(',',$list);
     	$res = $this->commodity->savepro($pid,$pname,$attr,$price,$key);
-		$cid = $this->commodity->cid;
+		  $cid = $this->commodity->cid;
     	$imgd = $data['img'];	
     	$img = model('imgd');
 
@@ -209,41 +222,36 @@ class Product extends Controller
     	}
     	$attr = model('comtoattr');
     	$attr->saveAll($attrlist);
+
+
+      $protocom = $this->protocom->addpro($pid,$cid);
+      //dump($protocom);
+
     }
     public function proadd()
     {
     	$this->view->engine->layout(false);
-       	$option = $this->category->checkAll();
+      $option = $this->category->checkAll();
     	$this->assign('optionid',$option);
     	return $this->fetch();
     }
     public function doaddproduct()
     {
-
     	$res = Request::instance()->param();
-
  		$r = $this->product->addproduct($res);
- 			$img = $res['img'];
-    	$i = 1;
-    	foreach ($img as $key => $value) {
-    		$i++;
-    		if ($i>11) {
-    			$imgp = model('imgp');
-    			$imgp->data([
-    				'tid' =>2,
-    				'path_url'=>$value,
-    				'pid'=> $r
-    			])->save();
-    		} else {
-	    			$imgp = model('imgp');
-	    			$imgp->data([
-	    				'tid' =>1,
-	    				'path_url'=>$value,
-	    				'pid'=> $r
-	    			])->save();
-    		}
-    	}
-
+ 		$img = $res['img'];
+        foreach($img as $key=>$value){
+            if ($key == 0) {
+                break;
+            }          
+            $this->imgp->data(['tid'=>1,'pid'=>$r,'path_url'=>$value],true)->isUpdate(false)->save();
+        } 
+        $this->img->add($img[0],$r);
+    }
+    public function dobrand()
+    {
+      $res = Request::instance()->param();
+      $this->category->add($res);
     }
 
 }

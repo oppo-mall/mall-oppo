@@ -33,7 +33,7 @@
                 <div class='grid-special equalize top-bar'>
                   {foreach $all as $val}
           <div class='box ' >
-  <a target='_blank' href="/index/shop/details/id/{$val['pid']} "title="">
+  <a target='_blank' href="/index/shop/details/pid/{$val['pid']}"title="">
           <div class='box-photo'>
                   <img width="185px" height="220px" alt='' title="{$val['title']}" src="{$val['path_url']}">
               </div>
@@ -43,12 +43,10 @@
 
     <div class='box-details'>
                                                 <p class='box-price'>
-          {if $val['old_price'] != null}
-          <span class='normal'>￥{$val['old_price']}.00</span>
-          {else}
-            <span class='normal'></span>
-          {/if}
-          <strong>￥{$val['price']}.00</strong>
+         
+          <span class='normal'>￥.00</span>
+         
+          <strong>￥.00</strong>
         </p>
                       </div>
        <!--  <i class="ribbon  ribbon-new   "></i> 
@@ -96,16 +94,16 @@
       </div>
     </section>
             <section class='brick-s grid-one'>
-      <div class="wrapper">
+     <!--  <div class="wrapper">
                 <picture>
-          <!--[if IE 9]> <video style="display: none;"> <![endif]-->
+          
           <source media='(min-width: 990px)' srcset='//shopfs.myoppo.com/shop/assets/images/content/others/services.png?20170210101314' />
           <source media='(min-width: 750px)' srcset='//shopfs.myoppo.com/shop/assets/images/content/others/sercices_1080x321.jpg' />
           <source media='(min-width: 300px)' srcset='//shopfs.myoppo.com/shop/assets/images/content/others/sercices_1080x530.png' />
-          <!--[if IE 9]> </video> <![endif]-->
+         
           <img src='__PICTURE__sercices_1080x530.png' srcset='//shopfs.myoppo.com/shop/assets/images/content/others/services.png'>
         </picture>
-      </div>
+      </div> -->
     </section>
       </main>
  {include file="/index/footer" /}

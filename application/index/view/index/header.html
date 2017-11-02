@@ -4,7 +4,7 @@
                   <ul class='gi log-area'>
   {if  session('?uid')}
   <li class='gi' >
-    <a href=''>
+    <a href='/index/index/myoppo'>
       <span class='text'>我的OPPO</span>
       <span class='icon icon-messages'></span>
       <span class='n-messages'>()</span>
@@ -29,82 +29,19 @@
   <!-- <li class='gi' data-desktop='.upper-area .log-area' data-mobile='.mobile-tools .log-area' id='old-version-link'>
   </li> -->
 </ul>      <ul class='gi menu-lang'>
-  <li class='gi gi-language' data-desktop='.menu-lang' data-mobile='.main-menu nav .nav-ul-view > ul'>
-    <a class='lang-link js-toggle-close' href='#'>Global</a>
-    <div class='languages js-content' data-desktop='.gi-language' data-mobile='.languages-panel'>
-      <div class='wrapper'>
-        <h3 class='h-epsilon'>Select your country or region</h3>
-        <ul>
-          <li>
-          <a  href='http://www.oppo.com/dz/'>Algérie</a>
-          </li>
-          <li>
-          <a  href='http://www.oppo.com/au/'>Australia</a>
-          </li>
-          <li>
-          <a  href='http://www.oppo.com/bd/'>Bangladesh</a>
-          </li>
-          <li>
-          <a  href='http://www.oppo.com/eg/'>Egypt</a>
-          </li>
-          <li>
-          <a href='http://www.oppo.com/en/'>Global</a>
-          </li>
-          <li>
-          <a  href='http://www.oppo.com/in/'>India</a>
-          </li>
-          <li>
-          <a  href='http://www.oppo.com/id/'>Indonesia</a>
-          </li>
-          <li>
-          <a  href='http://www.oppo.com/ke/'>Kenya</a>
-          </li>
-          <li>
-          <a  href='http://www.oppo.com/my/'>Malaysia</a>
-          </li>
-          <li>
-          <a  href='http://www.oppo.com/ma/'>Maroc</a>
-          </li>
-          <!-- <li>
-          <a  href='http://www.oppo.com/mx/'>México</a>
-          </li> -->
-          <!-- <li>
-          <a  href='http://www.oppo.com/ng/'>Nigeria</a>
-          </li> -->
-          <li>
-          <a  href='http://www.oppo.com/pk/'>Pakistan</a>
-          </li>
-          <li>
-          <a  href='http://www.oppo.com/ph/'>Philippines</a>
-          </li>
-          <li>
-          <a  href='http://www.oppo.com/sg/'>Singapore</a>
-          </li>
-          <li>
-          <a  href='http://www.oppo.com/lk/'>Sri Lanka</a>
-          </li>
-          <li>
-          <a  href='http://www.oppo.com/tw/'>台灣</a>
-          </li>
-          <li>
-          <a  href='http://www.oppo.com/ae/'>UAE</a>
-          </li>
-          <li>
-          <a  href='http://www.oppomobile.vn/'>Việt Nam</a>
-          </li>
-          <li>
-          <a  href='http://www.oppo.com/th/'>ประเทศไทย</a>
-          </li>
-          <li>
-          <a  href='http://www.oppo.com/mm/'>Myanmar</a>
-          </li>
-          <li>
-          <a  class='current'  href='http://www.oppo.com/cn/'>中国</a>
-          </li>
-        </ul>
-      </div>
+  {if  session('udertype') == 1}
+  <li class='gi gi-language'>
+    <a class='lang-link js-toggle-close' >管理中心</a>
+    <div class='languages js-content'>
     </div>
   </li>
+  {else}
+      <li class='gi gi-language' >
+    <a class='lang-link js-toggle-close' ></a>
+    <div class='languages js-content' >
+    </div>
+  </li>
+  {/if}
 </ul>    </div>
   </div>
   <div class='bottom-area'>
@@ -112,12 +49,21 @@
       <a class='js-open-menu' href='#'>
         <i class='js-open-menu-bar'></i>
       </a>
+{if  session('?uid')}
 <div class="shop-cart hidden" id="div">
   <a href="/index/shop/car">
         <span class="icon icon-cart"></span>
-    <span class="n-item-cart cart_number" id="shopping-count">3</span>
+    <span class="n-item-cart cart_number" id="shopping-count">{$count}</span>
   </a>
 </div>
+{else}
+<div class="shop-cart hidden" id="div">
+  <a href="/user/user/log">
+        <span class="icon icon-cart"></span>
+    <span class="n-item-cart cart_number" id="shopping-count">{$count}</span>
+  </a>
+</div>
+{/if}
       <div class='logo logo-extend'>
         <a href='' class="oppo-tj" data-tj="www|a|logo|home">
                           <h1>

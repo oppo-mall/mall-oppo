@@ -24,7 +24,7 @@ class Product extends Model
 	}
 	public function addproduct($res)
 	{
-		 $this->allowField(true)->save();
+		 $this->allowField(true)->save($res);
 		 return $this->pid;
 	}
 

@@ -8,6 +8,7 @@ use app\index\model\Adv;
 use app\index\model\Product;
 use app\index\model\Groom;
 use think\Session;
+use app\index\model\Shopcar;
 
 class Index extends Controller
 {
@@ -20,9 +21,11 @@ class Index extends Controller
 		$this->adv = new Adv();
 		$this->product = new Product();
 		$this->grooms = new Groom();
+		$this->shopcar = new Shopcar();
 	}
 	public function index()
 	{
+		$uid = Session::get('uid');
 		$user = Session::get('username');
 		$this->assign('user', $user);
 		//dump($user);
@@ -41,6 +44,11 @@ class Index extends Controller
 			$this->assign('alts' . $i, $adv[$i]['alt']);
 			$this->assign('titles'. $i, $adv[$i]['title']);
 		}
+		//遍历购物车
+		 $car = $this->shopcar->selCar($uid)->toArray();
+		 //统计购物车数量
+		 $count = count($car);
+		  $this->assign('count', $count);
 		//查推荐机型
 		$groom = $this->grooms->selGroom();
 		
@@ -59,6 +67,22 @@ class Index extends Controller
 	}
 
 	
-	
+	public function myoppo()
+	{
+		 $user = Session::get('username');
+		 $this->assign('user', $user);
+		 $uid = Session::get('uid');
+		
+		//遍历购物车
+		 $car = $this->shopcar->selCar($uid)->toArray();
+		 //统计购物车数量
+		 $count = count($car);
+		  $this->assign('count', $count);
+		//查推荐机型
+		$groom = $this->grooms->selGroom();
+		$this->assign('groom', $groom);
+
+		return  $this->fetch();
+	}
 
 }

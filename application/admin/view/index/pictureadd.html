@@ -808,7 +808,7 @@ function article_save_submit()
         dataType: 'json',
         data: {'url': url,'id':id,'alt':alt,'title':title,'path':imgArr},
     })
-    .do ne(function() {
+    .done(function() {
         console.log("success");
     })
 }
