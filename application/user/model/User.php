@@ -11,7 +11,7 @@ class User extends Model
 	{
 		return Db::name('user')->where('username|email|tel','=',$name)->find();
 	}
-	
+
 	public function upip($uid)
 	{
 		$user = User::get($uid);
@@ -25,6 +25,4 @@ class User extends Model
 		$this->allowField(true)->save($data);
 		
 	}
-	
-	
 }

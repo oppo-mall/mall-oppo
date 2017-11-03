@@ -123,6 +123,7 @@ class Index extends Controller
     }
     public function addbo()
     {   
+
         $picinfo = Request::instance()->param();
         $this->addpic();
     }
@@ -130,7 +131,7 @@ class Index extends Controller
     {
         $this->view->engine->layout(false);
         $info = Request::instance()->param(); 
-        
+
         if (array_key_exists(1,$info['path'])) {
             $info['path'] = json_decode($info['path']);
         } else {
@@ -142,6 +143,13 @@ class Index extends Controller
         $res = $this->adv->uppic($info);
 
         //$this->redirect('admin/index/advpicturelist/bid/'.$bid);
+
+
+        $id = Adv::get($info['id']); 
+        $bid = $id->bid;
+        $res = $this->adv->uppic($info);
+        $this->redirect('admin/index/advpicturelist/bid/'.$bid);
+
     } 
     public function delpic()
     {

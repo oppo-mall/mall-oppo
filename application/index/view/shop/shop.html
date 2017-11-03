@@ -20,9 +20,13 @@
   <div class='hero-image center'>
       <a  href='' >
     <picture>
+<<<<<<< HEAD
       {volist name = "adv" id = "v"}
       <img alt="{$v.url}" title="{$v.title}" src="{$v.path}"  >
       {/volist}
+=======
+      <img alt="{$alt}" title="{$title}" src="{$path}"  >
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
     </picture>
     </a>
   </div>
@@ -33,7 +37,11 @@
                 <div class='grid-special equalize top-bar'>
                   {foreach $all as $val}
           <div class='box ' >
+<<<<<<< HEAD
   <a target='_blank' href="/index/shop/details/pid/{$val['pid']}"title="">
+=======
+  <a target='_blank' href="/index/shop/details/id/{$val['pid']} "title="">
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
           <div class='box-photo'>
                   <img width="185px" height="220px" alt='' title="{$val['title']}" src="{$val['path_url']}">
               </div>
@@ -43,10 +51,19 @@
 
     <div class='box-details'>
                                                 <p class='box-price'>
+<<<<<<< HEAD
          
           <span class='normal'>￥.00</span>
          
           <strong>￥.00</strong>
+=======
+          {if $val['old_price'] != null}
+          <span class='normal'>￥{$val['old_price']}.00</span>
+          {else}
+            <span class='normal'></span>
+          {/if}
+          <strong>￥{$val['price']}.00</strong>
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
         </p>
                       </div>
        <!--  <i class="ribbon  ribbon-new   "></i> 
@@ -67,13 +84,51 @@
       <div class='wrapper'>
         <div class='grid-special equalize top-bar'>
           
+<<<<<<< HEAD
 
+=======
+{foreach $parts as $values}
+        <div class='box '>
+  <a target='_blank' href='' title="">
+          <div class='box-photo'>
+                  <img alt="{$values['alt']}" title="{$values['title']}" src="{$values['path_url']}">
+              </div>
+        <h2 class='box-heading'>
+              <a target='_blank' href='' title="{$values['title']}">{$values['aname']}</a>
+          </h2>
+
+    <div class='box-details'>
+                                                <p class='box-price'>
+          <span class='normal'>&nbsp;</span>
+          <strong>￥{$values['price']}.00</strong>
+        </p>
+                      </div>
+            <!-- 折扣、促销标签
+    <div class='box-features'>
+                      </div> -->
+  </a>
+</div>
+{/foreach}
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
        
           </div>
       </div>
     </section>
             <section class='brick-s grid-one'>
+<<<<<<< HEAD
     
+=======
+      <div class="wrapper">
+                <picture>
+          <!--[if IE 9]> <video style="display: none;"> <![endif]-->
+          <source media='(min-width: 990px)' srcset='//shopfs.myoppo.com/shop/assets/images/content/others/services.png?20170210101314' />
+          <source media='(min-width: 750px)' srcset='//shopfs.myoppo.com/shop/assets/images/content/others/sercices_1080x321.jpg' />
+          <source media='(min-width: 300px)' srcset='//shopfs.myoppo.com/shop/assets/images/content/others/sercices_1080x530.png' />
+          <!--[if IE 9]> </video> <![endif]-->
+          <img src='__PICTURE__sercices_1080x530.png' srcset='//shopfs.myoppo.com/shop/assets/images/content/others/services.png'>
+        </picture>
+      </div>
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
     </section>
       </main>
  {include file="/index/footer" /}
@@ -114,7 +169,129 @@
         <script src="__JS__opposhop.min.js"></script>
 
 
+<<<<<<< HEAD
       
+=======
+        <!--   <script type="text/javascript">
+    var xnscript = document.createElement("script");
+    xnscript.src = "https://xiaoneng.oppo.com:9091/__JS__xn6/ntkfstat.js?siteid=kf_9568";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(xnscript, s);
+</script>    <script type="text/javascript">
+    var vm;
+    OPPO.conf.BASE_URL = '//www.opposhop.cn';
+    OPPO.conf.STORE_URL = '//www.opposhop.cn';
+    OPPO.conf.ACCOUNT_URL = '//my.oppo.com';
+    OPPO.conf.WWW_URL = "//www.oppo.com/cn/";
+    OPPO.conf.SSO_LOGIN_URL = "https://id.oppo.com/login";
+    OPPO.conf.SSO_LOGOUT_URL = "https://id.oppo.com/logout";
+    OPPO.conf.SSO_REGISTER_URL = "https://id.oppo.com/register/sms?type=1";
+    OPPO.conf.date = '1506675606';
+    
+    var url = OPPO.conf.STORE_URL + '/auth/check';
+
+    var setNTKFParams = function(data) {
+        if("undefined" == typeof(NTKF_PARAM)) return;
+        NTKFTimer = setTimeout(function(){
+            if("undefined" == typeof(NTKF)) {
+                setNTKFParams(data);
+            } else {
+                NTKF.im_updatePageInfo({uid: data['oid'], 'uname': data['name']});
+            }
+        }, 300);
+    };
+
+    //callback for jsonp
+    var successCallback = function(data){
+        $('ul.log-area .hasLogout').removeClass('show').addClass('hidden');
+        $('ul.log-area .hasLogin').removeClass('hidden').addClass('show');
+        $('.cart_number').text(data['cart_number']);
+        $('.n-messages').text("(" + data['message_number'] + ")");
+        $('.user-menu').addClass('isLogin');
+        $('.user-menu-toLogin').hide();
+        if (data['message_number']>0 || data['cart_number']>0) {
+          $('.js-open-user').addClass('point-red');
+          if (data['message_number']>0) $('.user-menu-message a').addClass('point-red');
+          if (data['cart_number']>0) $('.user-menu-cart a').addClass('point-red');
+        };
+        if (data['append'] != '') $('body').append(data['append']);
+
+                setNTKFParams(data);
+    };
+    var errorCallback = function(){
+        $('ul.log-area .hasLogin').removeClass('show').addClass('hidden');
+        $('ul.log-area .hasLogout').removeClass('hidden').addClass('show');
+        $('.cart_number').text(0);
+    };
+    $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'jsonp',
+        error: function() {
+            errorCallback();
+        },
+        success: function(data){
+            successCallback(data);
+        }
+    });
+
+    (function () {
+        var controllerNameWithAction = "HomeController@index".split('@');
+        var controllerName = controllerNameWithAction[0];
+        var actionName = controllerNameWithAction[1];
+        var controller = OPPO.controller[controllerName];
+        if (controller) {
+            action = controller()[actionName];
+            if (action) {
+                $(function () {
+                    vm = action();
+                });
+            }
+        }
+        // else console.log(controllerNameWithAction);
+    })();
+    </script>
+
+    <script type="text/javascript">
+      $(function(){
+              });
+    </script> -->
+
+<!--oppo统计-->
+<!-- <script>
+var _optj = _optj || [];
+//判断是否登录，有登录则输出用户ID
+
+//加入购物车的商品ID信息
+
+//判断是否有订单号信息 有则输出
+
+
+ //判断是否有订单的商品ID信息 有则输出 多个用"|"中划线分割
+
+
+(function() {
+  var op = document.createElement("script");
+  op.src = "//shopfs.myoppo.com/hd/static/__JS__optj-1.1.0.min.js?20170313";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(op, s);
+})();
+</script>
+
+<noscript><img src="__PICTURE__3ddc415fbb1444d183fe57d5363f0490.gif" style="border:0" alt="" /></noscript> 
+
+<script type="text/javascript">
+$(function(){
+  $("body").on("click",".oppo-tj",function(){
+    if (typeof $(this).data('tj') != 'undefined' && typeof _optj != 'undefined') {
+      var tj = $(this).data('tj');
+      var tjs = tj.split("|");
+      _optj.push(['_trackEvent', tjs[0], tjs[1], tjs[2], tjs[3]]);
+    };
+  });
+});
+</script> -->
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
   </body>
 </html>
 <!-- cached at 2017-09-29 17:00:06 -->

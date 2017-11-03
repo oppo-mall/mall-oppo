@@ -7,6 +7,8 @@ use app\index\model\Comtoattr;
 use app\index\model\Commodity;
 use app\index\model\Attr;
 use app\index\model\Shopcar;
+use app\index\model\User;
+
 /**
 * 
 */
@@ -17,11 +19,14 @@ class ajax extends Controller
 	public function _initialize()
 	{
 		parent::_initialize();
+
 		$this->comment= new Comment($_POST);
 		$this->coloraid= new Comtoattr();
 		$this->commod= new Commodity();
 		$this->attr = new Attr();
 		$this->shop = new Shopcar($_POST);
+		$this->user = new User();
+		
 	}	
 	
 	function register()
@@ -60,6 +65,7 @@ class ajax extends Controller
 		} 
 		
 	}
+
 
 	function color() 
 	{
@@ -121,3 +127,6 @@ class ajax extends Controller
 
 	}
 }
+
+
+

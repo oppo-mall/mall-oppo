@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html class='no-js'>
   <head>
@@ -886,3 +887,719 @@ $('.minus').click(function () {
  
   </body>
 </html>
+=======
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<html class='no-js'>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EDGE" />
+    <meta content='width=device-width,initial-scale=1, user-scalable=no' name='viewport'>
+    <title>『{$details[0]['title']}』最新报价_图片_配置参数-OPPO智能手机官网 </title>
+    <link media="all" type="text/css" rel="stylesheet" href="__CSS__styles_2.css">
+
+    <script src="__JS__jquery-1.9.1.min.js"></script>
+
+   
+</head>
+
+  <body>
+{include file="/index/header" /}
+    
+      <main class='main-content'>
+    <div class='wrapper'>
+            <ul class='breadcrumb'>
+  <li>
+    <a href='/index/index/index'>
+      首页
+      <span>/</span>
+    </a>
+  </li>
+            <li>
+                  <a href='/index/shop/shop'>
+            商品列表
+            <span>/</span>
+          </a>
+              </li>
+          <li>
+                  {$details[0]['title']}
+              </li>
+      </ul>
+          </div>
+                <div class='buying-details'>
+  <article class='wrapper'>
+    <div class='buying-header-mov'></div>
+    <div class='g'>
+      <div class='gi lap-two-fifths desk-one-half'>
+        <div class='product-gallery js-tabs'>
+    <div class='product-gallery-view js-tab-content swipe' id="product-swipe">
+        <div class="swipe-wrap">
+          {foreach $big as $values}
+                        <div class='swipe-slide  is-active '>
+                <img alt={$values['alt']} title="{$values['title']}" src="{$values['path_url']}">
+            </div>
+            {/foreach}
+        </div>
+    </div>
+    <div class='product-gallery-items'>
+        <div class="ps-carousel" id="product-carousel">
+          {foreach $small as $val}
+                        <div class="ps-item  ps-item-active " >
+                <a href='#'>
+                    <img alt="{$val['alt']}" src="{$val['path_url']}">
+                </a>
+            </div>
+            {/foreach}
+        </div>
+    </div>
+</div>
+      </div>
+      <div class='gi lap-three-fifths desk-one-half'>
+        <div class='buying-header-desk'>
+          <h1 class='product-title' data-desktop='.buying-header-desk'
+              data-mobile='.buying-header-mov'>{$details[0]['title']}</h1>
+          <p class="product-name-extra" data-desktop=".buying-header-desk" data-mobile=".buying-header-mov"></p>
+        </div>
+        <div class='buying-price'><p>
+              <strong class='price'>￥{$details[0]['price']}</strong>
+              {if $details[0]['old_price'] != 0}
+              <span class='old-price'>￥{$details[0]['old_price']}</span>
+              {else}
+               <span class='old-price'></span>
+              {/if}
+        </div>
+        <div class='add-cart-form'>
+  <form id="add-cart-form" onsubmit="return false;">
+        <section class="g module product-selector" data-common-name="attribute-0" data-selector-type="box">
+        <div class='gi one-quarter desk-one-fifth'>
+            <div class='radio-label'>网络</div>
+        </div>
+        <div class="gi three-quarters desk-four-fifths">
+            <div class="g g-wrapper-s">
+              {foreach $inter as $in}
+                <div class="gi one-half desk-one-third ">
+                    <a href="" class="swatch ">
+                        <span>{$in['inter']}</span>
+                    </a>
+                </div>
+              {/foreach}
+            </div>
+        </div>
+    </section>
+        <section class="g module product-selector" data-common-name="attribute-1" data-selector-type="box">
+        <div class='gi one-quarter desk-one-fifth'>
+            <div class='radio-label'>颜色</div>
+        </div>
+        <div class="gi three-quarters desk-four-fifths">
+            <div class="g g-wrapper-s">
+              {foreach $color as $c}
+                <div class="gi one-half desk-one-third ">
+                    <a href="javascript:;" class="swatch selected">
+                        <span>{$c['color']}</span>
+                    </a>
+                </div>
+              {/foreach}
+                    <!-- <div class="gi one-half desk-one-third hidden">
+                      <a href="javascript:;" class="swatch disabled"selected>
+                          <span>白色</span>
+                      </a>再查一次将selected等于当前的pid
+                    </div> -->
+            </div>
+        </div>
+    </section>
+        <section class="g module product-selector" data-common-name="attribute-2" data-selector-type="box">
+        <div class='gi one-quarter desk-one-fifth'>
+            <div class='radio-label'>容量</div>
+        </div>
+        <div class="gi three-quarters desk-four-fifths">
+            <div class="g g-wrapper-s">
+              {foreach $size as $si}
+                <div class="gi one-half desk-one-third ">
+                    <a href="javascript:;" class="swatch">
+                        <span>{$si['size']}G</span>
+                    </a>
+                </div>
+              {/foreach}
+             </div>
+        </div>
+    </section>
+        <div class="g product-gifts" id="good-gifts">
+        <div class="one-quarter desk-one-fifth">
+                <div class="y-label">赠品</div>
+        </div>
+        <div class="gi three-quarters desk-four-fifths">
+             <div class="g gift-item clearfix">
+                <input type="hidden" name="gift[]" value="384">
+                <div class="y-img"><img src="//static.oppo.com/archives/201607/_thumbnail/thumbnail_201607210407421v5tRAVnBqTjv8dk_60x60.jpg" alt="蓝牙耳机Q13"></div>
+                <div class="y-name"><a href="//www.opposhop.cn/products/384.html" title="蓝牙耳机Q13" target="_blank">蓝牙耳机Q13</a></div>
+                <div class="y-attributes">
+                    <ul class="swatches">
+                                                <li class="swatch  selected " data-gift-id="384" data-thumbnail="//static.oppo.com/archives/201607/_thumbnail/thumbnail_201607210407421v5tRAVnBqTjv8dk_60x60.jpg"><a href="javascript:;">白色</a></li>
+                                            </ul>
+                </div>
+            </div>
+     </div>
+    </div>
+                    
+        <input type="hidden" name="service-repair" value=" 0 "/>
+    <input type="hidden" name="service-screen" value="0"/>
+    <input type="hidden" name="service-accident" value="0"/>
+
+  <div class="g pro-service" id="product-services">
+    <div class="one-quarter desk-one-fifth">
+      <div class="y-label">服务</div>
+    </div>
+    <div class="gi three-quarters desk-four-fifths">
+      <div class="g pro-service-broke">
+        <a class="gi pro-service-tab service-screen tab-normal" data-price="129" data-origin="129" data-ttl="12" data-title="一"> 
+          <span class="service-flag-broke">碎</span> 
+          <span>屏碎保一年 ￥129</span> 
+          <i class="icon-question"></i> 
+          <div class="screen-tips">
+            <p>钻卡会员免费享有 <span>2</span> 次</p>
+            <p>金卡会员半价购买 <span>2</span> 次</p>
+          </div>
+        </a>
+      </div>
+      <div class="g pro-service-defer">
+        <a class="gi pro-service-tab service-repair tab-normal" data-price="79" data-origin="79" data-ttl="6" data-title="半"> 
+          <span class="service-flag-defer">延</span> 
+          <span>延保半年 ￥79</span>
+        </a>
+        <a class="gi pro-service-tab service-repair tab-normal" data-price="129" data-origin="129" data-ttl="12" data-title="一"> 
+          <span class="service-flag-defer">延</span> 
+          <span>延保一年 ￥129</span>
+        </a>
+      </div>
+      <div class="pro-service-igree">
+        <p>购买保险服务表示您已同意
+          <a id="service-igree" class="terms">《OPPO保障服务条款》</a>
+          <a href="//www.oppo.com/cn/service/guarantee" target="_blank" class="color-primary">了解详情&gt;&gt;</a>
+        </p>
+      </div>
+    </div>
+  </div>
+    <div class="g slab-white-border buying-actions">
+      {if $details[0]['stock'] != 0}
+      <div class="gi lap-one-third">
+          <div class="wrapper">
+            <div class="counter-box" id="product-amount">
+              <a class="btn minus disabled" data-bind="minus">-</a>
+              <input class="number" type="text" id="amount-textbox" value="1">
+              <a class="btn plus" data-bind="plus">+</a>
+            </div>
+          </div>
+      </div>
+      <div class="gi lap-two-thirds">
+          <div class="g normal-button-container">
+              <div class="gi one-half">
+                  <button class="button-light" id="button-buy">加入购物车</button>
+              </div>
+              <div class="gi one-half">
+                  <button class="button button-primary" id="go-buy">
+                  立即购买
+                  </button>
+              </div>
+          </div>
+      </div>
+  <!-- </div>
+
+    <div class="g slab-white-border buying-actions">
+ -->
+{else}
+                  <div class='gi one-half'>
+            <button class='button-disabled' disabled>暂时缺货</button>
+        </div>
+                    <div class='gi one-half'>
+                <a class="button button-light button-notice" >
+                    到货通知我
+                </a>
+                <div id="dialog-notice" class="hidden">
+
+  <div class="mask-common"></div>
+  <div class="dialog-common dialog-box-common">
+    <div class="dialog-container">
+      <a class="dialog-close-common">×</a>
+      <div class="dialog-content-common">
+        <div class="dialog-common-content">
+          <div class="field">
+            <h3 class="color-primary">当该商品可以购买时，您将收到短信通知。</h3>
+          </div>
+          <div class="desk-two-thirds one-whole">
+            <input type="text" name="mobile" value="" placeholder="请输入手机号码"/>
+            <div class="alert-danger"></div>
+            <div class="field">
+                <a class="button" id="button-notice-submit">提交</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="dialog-notice-success" class="hidden">
+  <div class="mask-common"></div>
+  <div class="dialog-common dialog-box-common">
+    <div class="dialog-container">
+      <a class="dialog-close-common">×</a>
+      <div class="dialog-content-common">
+        <div class="dialog-common-content color-primary">
+          <div class="field">
+            <h3>登记成功！</h3>
+          </div>
+          <p>您将在该商品补货完成后收到短信通知。</p>
+          <p>该窗口将在 <font class="alert-danger count-down"> 3 </font> 秒后自动关闭。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="dialog-reserve-success" class="hidden">
+  <div class="mask-common"></div>
+  <div class="dialog-common dialog-box-common">
+    <div class="dialog-container">
+      <a class="dialog-close-common">×</a>
+      <div class="dialog-content-common">
+        <div class="dialog-common-content color-primary">
+          <div class="field">
+            <h3>预约成功！</h3>
+          </div>
+          <p>商品开售时您将收到短信通知</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+            </div>
+      {/if}
+
+</div>
+  </form>
+</div>
+        
+        <div class='g delivery-specs pro-delivery-specs'>
+          <div class='gi one-half desk-one-quarter'>            <div class='badge'>
+              <div class='badge-item'>
+                <span class='icon icon-postage'></span>
+              </div>
+              <div class='badge-info'>
+                <span> 顺丰包邮 </span>
+              </div>
+            </div>
+          </div>
+          <div class='gi one-half desk-one-quarter'>
+            <a href="//www.oppo.com/cn/service/help?name=%E6%9C%8D%E5%8A%A1%E6%94%BF%E7%AD%96" target="_blank">
+            <div class='badge'>
+              <div class='badge-item'>
+                <span class='icon icon-return'></span>
+              </div>
+              <div class='badge-info'>
+                <span>7天包退30天包换</span>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class='gi one-half desk-one-quarter'>
+            <a href="//hd.oppo.com/act/2016/e-invoice/index.html" target="_blank">
+            <div class='badge'>
+              <div class='badge-item'>
+                <span class='icon icon-credit'></span>
+              </div>
+              <div class='badge-info'>
+                <span>电子发票</span>
+              </div>
+            </div>
+            </a>
+          </div>
+                      <div class='gi one-half desk-one-quarter'>
+              <div class='badge'>
+                <div class='badge-item'>
+                  <span class='icon icon-points'></span>
+                </div>
+                <div class='badge-info'>
+                  <span>购物返积分</span>
+                </div>
+              </div>
+            </div>
+                  </div>
+
+      </div>
+    </div>
+  </article>
+</div>
+
+    <div class="product-related">
+        <div class="wrapper">
+            <div class="related-tabs">
+              
+            </div>
+          
+    </div>
+
+            <div class="product-view">
+                <div class="product-view-tabs">
+            <div class="wrapper">
+              <ul class="clearfix tabs" id="product-tabs">
+                                    <li class="  y-tab-active" name="li" ><a  >商品详情</a></li>
+                                    <li class=" " name="li"><a >规格参数</a></li>
+                                    <li  class=" "  name="li"><a  >用户评价<span id="comment-total">{$count}</span></a></li>
+                                </ul>
+              <div class="sticky-buy">
+                <a href="javascript:;" class="go-buy oppo-tj" id="sticky-go-buy" data-tj="store|a|product_buy|sticky_buy">购买</a>
+                </div>
+            </div>
+        </div>
+                <div class="product-view-detail" >
+                        <div class="product-detail-tab   tab-item-active" name="details" >
+                <section>
+                   {foreach $large as $la}
+                <p style="text-align:center;">
+            <picture>
+                <img src="{$la['path_url']}" alt=''>
+            </picture>
+        </p>
+        {/foreach}
+<input type="hidden" name="ui" value="{$uid}">
+<input type="hidden" name="pid" value="{$id}">
+            </section>
+
+            </div>
+       <div class="product-detail-tab  " name="details">
+       <section>
+        {foreach $param as $pa}
+        <p style="text-align:center;">
+            <picture>
+                <img src="{$pa['path_url']}"  alt=''>
+            </picture>
+        </p>
+        {/foreach}
+            </section>
+
+            </div>
+                        <div class="product-detail-tab " id="product-detail-comments" name="details">
+                <section>
+    <div class="wrapper comments-wrapper">
+        <div class="y-comments-header clearfix">
+            <div class="reviews-switchable" id="comments-switchable">
+               <!--  <input type="text" name=""> -->
+            </div>
+            {if $user && $res != 1}
+            <div class="comments-button">
+                <a class="button button-s" href="#comment-label"  onclick="say();" >我要评论</a>
+            </div>
+            {else}
+             <div class="comments-button">
+                <a class="button button-s" href="#comment-label"  onclick="say1();" >我要评论</a>
+            </div>
+            {/if}
+        </div>
+    </div>
+      <div class="y-modal" role="dialog" id="y-modal-t6H9iT1508843471694" tabindex="-1" aria-hidden="true"> 
+          <div class="y-modal-header"></div>  
+          <div class="y-modal-container">   
+            <div class="y-modal-content">     
+             <div class="y-modal-message">无法评论，原因如下：
+              <pre>
+              1.未登录
+              2.未购买本产品
+              3.已评论，可追加评论
+            </pre>
+            </div>   
+          </div>    
+          <div class="y-modal-buttons lap-one-whole" id="sure">     
+            <a  class="y-modal-btn y-modal-accept button button-only" data-modal-confirm="true">确定</a>    
+          </div>  
+        </div>  
+        <div class="y-modal-footer">
+          
+        </div>  
+        <div class="y-modal-close">
+          <span class="close">x</span>
+        </div>
+      </div>
+      <div id="comments" class="y-comments-view ">
+        <ul class="y-comment-list ">
+          {foreach $comment as $key=>$value}
+          <li class="comment-leaf">
+            <article class="y-comment-body">
+              <div class="y-comment-meta clearfix">      
+                <div class="y-comment-author">                        
+                  <div class="y-comment-avator">                  
+                    <img src="{$value['icon']}" alt="">            
+                  </div>                        
+                  <div class="comment-author"><em>{$value['create_time']|date="Y年m月d日",###}</em></div>      
+                </div>       
+                  <div class="y-comment-metadata">            
+                    <span class="y-comment-stars">                  
+                      <span class="stars star-5"></span>            
+                    </span>      
+                  </div>      
+                </div>
+                <div class="y-comment-content">{$value['content']}
+                </div>
+                {if $uid == $value['uid']}
+                 <div class="comments-button">
+                
+                <a class="button button-s" href="#respond2" style="margin-left: 1000px;"  onclick="say2()">追加评论</a>
+                  </div>
+                {/if}
+              </article>
+              {foreach $com as $keys=>$values}
+               {if $value['id'] == $values['bid']} 
+               <article class="y-comment-body comment-append">
+                  <div class="y-comment-meta">     
+                    <div class="comment-label" >追加评论:&nbsp;&nbsp;
+                       <input type="hidden" name="cid" value="{$cid}">
+                    </div>     
+                    <div class="comment-date">{$values['create_time']|date="Y年m月d日",###}</div>
+                  </div>
+                  <div class="y-comment-content">{$values['content']}</div>
+                </article>
+               {/if}
+                {/foreach}
+            </li>
+            {/foreach}
+            </ul>
+          </div>
+        <div >
+          <ul  class=""> 
+          {volist name='comment' id='comment'}
+            <li  hidden="hidden"> {$comment.id}</li>
+          {/volist}   
+            
+         </ul>
+      </div>
+     {$page}
+        <div id="respond" class="y-comment-respond" style="display: none;">
+            <div class="y-comment-form">
+                <div class="field y-form-comment">
+                    <label id="comment-label" name="comment-label">评论内容</label>
+                    <textarea id="comment" placeholder="外观好看吗，拍照怎么样，好用吗？"></textarea>
+                </div>
+                <div class="y-form-button">
+                    <a class="button button-s"  id="scomment">提交评论</a>
+                </div>
+            </div>
+        </div>
+        <div id="respond2" class="y-comment-respond" style="display: none;">
+            <div class="y-comment-form">
+                <div class="field y-form-comment">
+                    <label id="comment-label" name="comment-label">追加评论内容</label>
+                    <textarea id="comment2" placeholder="还有什么想说的"></textarea>
+                </div>
+
+                <div class="y-form-button">
+                    <a class="button button-s"  id="scomment2">提交评论</a>
+                </div>
+            </div>
+        </div>
+
+</section>
+            </div>
+                    </div>
+    </div>
+    
+                                          </main>
+{include file="/index/footer" /}
+    
+    <div class='navi-scroll'>
+  <div class="navi-scroll-content">
+    <a href="javascript:;" class="scroll-top-btn"><span>回到顶部</span><i></i></a>
+      </div>
+</div>
+
+<div class="y-modal" id="modal-trade" role="dialog" tabIndex="1">
+    <div class="y-modal-header"></div>
+    <div class="y-modal-container">
+        <div class="y-modal-content">
+            <div class="trade-message"><i></i><span>商品已成功加入购物车！</span></div>
+            <div class="trade-action">
+                <a href="//www.opposhop.cn/trade" class="button button-primary">去结算</a>
+            </div>
+        </div>
+        <div class="y-modal-buttons">
+            <div class="g">
+                <span>您也可以</span><a href="javascript:;" class="y-modal-btn y-modal-accept">再逛逛</a>
+            </div>
+        </div>
+    </div>
+    <div class="y-modal-footer"></div>
+    <div class="y-modal-close"><span class="close">x</span></div>
+</div>
+
+<div class="y-modal y-modal-service" id="modal-service" role="dialog" tabIndex="1">
+    <div class="y-modal-header">
+      <div class="y-modal-close"><span class="close">x</span></div>
+    </div>
+    <div class="y-modal-container">
+        
+    </div>
+    <div class="y-modal-footer"></div>
+</div>
+    <div class="purchase-advisory">
+        <a onclick="NTKF.im_openInPageChat('');" class="oppo-tj" data-tj="store|chatclient|purchase|p" id="advisory">购机咨询</a>
+    </div>
+
+    <script src="__JS__global.min.js"></script>
+
+        <script src="__JS__opposhop.min.js"></script>
+
+    
+    <script src="__JS__main.min.js"></script>
+
+<script src="__JS__product.min.js"></script>
+
+
+<script src="__JS__jquery-md5-min.js" ></script>
+
+<!-- 一级评论 -->
+<script>
+  var cls = document.getElementById('respond');
+    var id = {$uid};
+    var pid = {$id};
+    var icon = "__PICTURE__noavatar_middle.gif";
+    //var input = document.getElementById("comment");  
+    var date = new Date();
+    var month =  parseInt(date.getMonth())+1;
+      
+    $('#scomment').click(function() {
+        var area = $('#comment').val();
+        
+          $.ajax({    
+                type:"post",    
+                url:"/index/ajax/comments",    
+                dataType: 'json',
+                async : true,
+                data: {content:area,uid:id,is_first:1,bid:0,pid:pid,is_comment:1}, 
+                success:success  
+            }); 
+
+          function success(data) { 
+           $(".y-comment-list:last").append(" <li class='comment-leaf'>"
+                     +"<article class='y-comment-body'>" 
+                     + "<div class='y-comment-meta clearfix'>"
+                     + "<div class='y-comment-author'>"
+                     +  "<div class='y-comment-avator'>"      
+                     +   "<img src="+icon+" alt='' />" +"</div>" + "<div class='comment-author'>"+ '<em>'+ date.getFullYear() + '年' + month +'月'+ date.getDate() +'日'+'</em>'+ "</div>"+ "</div>" + "<div class='y-comment-metadata'>"+ "<span class='y-comment-stars'> "+  "<span class='stars star-5'>"+ "</span> " + "</span>" + "</div>" + "</div>" +  "<div class='y-comment-content'>"+ data.content
+                + "</div>" + " <div class='comments-button'>" + " <a class='button button-s' style='margin-left: 1000px;' >追加评论</a>" +"</div></article></li>"
+                     );
+  
+       
+            }
+              cls.style.display = 'none';
+
+
+    });
+</script> 
+ 
+ <!-- 二级级评论 -->
+<script>
+    var cls2 = document.getElementById('respond2');
+    var uid = {$uid};
+    var pid = {$id};
+    var cid = {$cid};
+    var date = new Date();
+    var month =  parseInt(date.getMonth())+1;
+      
+    $('#scomment2').click(function() {
+        var text = $('#comment2').val();
+          $.ajax({    
+                type:"post",    
+                url:"/index/ajax/addcomments",    
+                dataType: 'json',
+                async : true,
+                data: {content:text,uid:uid,is_first:1,bid:cid,pid:pid}, 
+                success:erji  
+            }); 
+          
+          function erji(data) {  
+            $(".comment-leaf:last").append(" <article class='y-comment-body comment-append'>"
+                     +" <div class='y-comment-meta'>  " 
+                     + "<div class='y-comment-meta'>"
+                     +   "<div class='comment-label' >追加评论:&nbsp;&nbsp;<input type='hidden' name='cid' value="+{$cid}+"/></div> "+ " <div class='comment-date'>"+ date.getFullYear() + '年' + month +'月'+ date.getDate() +'日'+'</div></div>'+"<div class='y-comment-content'>" +  data.content
+                 + "</div></article>"
+                     );
+          
+            }
+            cls2.style.display = 'none';
+    });
+</script> 
+
+
+
+<script>
+
+    $(window).on('load', function() {
+     
+        var stickyBuy = new Yo.Product.stickyBuy();
+      
+
+    });
+</script>
+
+<!-- 轮播图 -->
+<script type="text/javascript">
+  $(function(){
+      Yo.Product.swipe('product-swipe');
+      Yo.Product.initCarousel();
+      Yo.Product.initAmount();
+
+      var Related = new Yo.Product.Related();
+
+      var Comments = Yo.Product.Comments = new Yo.Product.Comments(106, '#comments', '#comments-pagination', '#respond');
+  });
+</script>
+<!-- 选项卡 -->
+<script type="text/javascript">
+  var aButton = document.getElementsByName('li');
+  var aDiv = document.getElementsByName('details');
+  for (var i=0; i<aButton.length; i++) {
+    (function (index) {
+      aButton[i].onclick = function () {
+        for (var j=0; j<aButton.length; j++) {
+          aDiv[j].className = 'product-detail-tab';
+          aButton[j].className = ' ';
+        }
+        aDiv[index].className = 'product-detail-tab tab-item-active';
+        this.className = '  y-tab-active';
+      }
+    })(i);
+  }
+
+ 
+</script>
+<!-- 评论按钮 --> 
+<script type="text/javascript">
+  var cls = document.getElementById('respond');
+  var cls2 = document.getElementById('respond2');
+  var div = document.getElementById('y-modal-t6H9iT1508843471694');
+  //评论
+    function say() {
+    cls.style.display = 'block';
+    cls2.style.display = 'none';
+    }
+    //追加评论
+  function say2() {
+    cls2.style.display = 'block';
+    cls.style.display = 'none';
+    }
+    //不允许评论弹窗
+  function say1() {
+    div.className = 'y-modal y-modal-active'; 
+    $('#sure').click(function () {
+      div.className = 'y-modal'; 
+    });
+    $('.y-modal-close').click(function () {
+      div.className = 'y-modal'; 
+    });
+    }
+</script>
+
+
+  </body>
+</html>
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2

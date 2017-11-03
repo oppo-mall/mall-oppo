@@ -2,6 +2,7 @@
 namespace app\index\model;
 use think\Model;
 use think\Db;
+
 use traits\model\SoftDelete;
 class Comment extends Model
 {
@@ -12,7 +13,6 @@ class Comment extends Model
 	{
 		
 		return $this->field('id,content,bid,create_time')->where('bid','<>',0)->select();
-		
 	}
 
 	//插入一级评论

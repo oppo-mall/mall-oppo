@@ -63,4 +63,5 @@ class User extends Model
 	{
 		return User::destroy($uid,true);
 	}
+
 }

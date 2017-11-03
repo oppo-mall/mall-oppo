@@ -1,25 +1,73 @@
 <!DOCTYPE html>
-
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
 <html class='no-js'>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EDGE" />
+    <meta content='width=device-width,initial-scale=1, user-scalable=no' name='viewport'>
     <title>购物车-OPPO智能手机官网 </title>
+    <meta name="keywords" content="购物车,OPPO智能手机官网 " />
+    <meta name="description" content="OPPO手机购物车为您提供OPPO手机购物车流程,想知道更多的购物车信息，就在OPPO智能手机官网。 " />
     <link media="all" type="text/css" rel="stylesheet" href="__CSS__styles_6.css?v=2017010100032">
-     <!-- <link media="all" type="text/css" rel="stylesheet" href="__CSS__styles_7.css?v=2017010100032"> -->
-   <!--  <link media="all" type="text/css" rel="stylesheet" href="__CSS__styles_9.css?v=2017010100032">  -->
-       <script src="__JS__jquery-1.9.1.min.js"></script>
 
-    <script src="__JS__jquery.lazyload.min.js"></script>    
-    <script src="__JS__jquery.countdown.min.js"></script>
-    <script src="__JS__pkg-detail-f23a56f.js"></script>
+    <script type="text/javascript">
+		function checkBrowser(){
+			var browser = {};
+			var div = document.createElement( "div" );
+			div.innerHTML = "<link/><table></table><a href='/a'>a</a><input type='checkbox'/>";
+            var a = div.getElementsByTagName( "a" )[0];
+			style = a && a.style;
+			if (!style) {
+				return;
+			}
+			style.cssText = "float:left;opacity:.5";
+			// Support: IE<9
+			// Make sure that element opacity exists (as opposed to filter)
+			browser.opacity = style.opacity === "0.5";
+			// Verify style float existence
+			// (IE uses styleFloat instead of cssFloat)
+			browser.cssFloat = !!style.cssFloat;
+			if(browser.opacity && browser.cssFloat){
+				return true;
+			}else{
+                //IE 8测试
+                var userAgent = navigator.userAgent.toLocaleUpperCase();
+                var msie = /MSIE [\d\.]+/;
+                var version = msie.exec(userAgent);
+                if (version<"MSIE 8") return false;
+                else return true;
+			}
+		}
+        var v = checkBrowser();
+		if (!v) {
+			window.location.href = "https://www.opposhop.cn/lower.html";
+		}
+    </script>
+    
     <script src="__JS__modernizr.custom.js"></script>
-    <script src="__JS__distpicker.js"></script>
-     
+
+          <script>
+    NTKF_PARAM = {
+      siteid: "kf_9568",
+      settingid: "kf_9568_1493698078342",
+      uid:"",
+      uname:"",
+      isvip: "0",
+      userlevel: "1",
+      erpparam: "abc",
+      ntalkerparam:{
+        cartprice: 2999.00,
+　　    items: [{"id":415,"count":"1"}]
+      }
+    };
+  </script>
   </head>
   <body>
 {include file="/index/header" /}
         <main class='main-content slab-light'>
-
       <div class='wrapper'>
         <ul class='breadcrumb'>
   <li>
@@ -48,16 +96,24 @@
             <h5 class='step-heading'>支付</h5>
       <div class='step-gradient'></div>
     </div>
-  </li></ul>  
+  </li></ul>
 
-         
-            <div class='gi one-whole slab-white-border cart-reversion' id="gouwuche" style="display: block;" >
+          <div class="row">
+            <div class="col-md-12">
+            <div class="alert alert-danger" role="alert">
+              <ul class="list-unstyled">
+                <strong class='error_msg_note'>
+                </strong>
+              </ul>
+            </div>
+            </div>
+          </div>          
+          <form class='g'>
+            <div class='gi one-whole slab-white-border cart-reversion'>
               <ul class='purchase-list-header'>
-                
                 <li class='first'>
-                  <label class="check-box-label check-box-all" for='checkAll'>
+                  <label class="check-box-label check-box-all is-checked" for='checkAll'>
                     <span class="icon icon-checkbox"></span>
-                    <input type="checkbox" name="" id="xz" >
                     <span class="space-ml-10">全选</span>
                   </label>
                 </li>
@@ -204,8 +260,6 @@
 </div>
 
     </main> 
-
-  
     <div id='dialog-confirm' class='hidden'>
 			<div class="mask-common"></div>
 			<div class="dialog-common dialog-box-common">
@@ -263,8 +317,6 @@
         <div class="purchase-advisory">
         
     </div>
- 
-
 <script type="text/javascript">
   var all = document.getElementById('xz');
   var oInput = document.getElementsByName('input[]');
@@ -328,7 +380,6 @@ $('.checkadd').click(function(){
    $('#dialog-error-msg').addClass('hidden');
  })
 </script>
-
 
   </body>
 </html>

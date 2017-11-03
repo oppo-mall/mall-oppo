@@ -58,29 +58,28 @@
             
             <div class="field">
                 <div class="fl">
-                    <label id="forCheckBox" for="isaccept" onclick="changeCheckbox1()" class="checkBoxLabel choosed"></label>
-                    <input type="checkbox" id="isaccept" checked="checked" name="accept">
-                    <label id="checkBoxLabel1">已阅读并同意<a class="agree_link" href="" target="_blank">《OPPO帐号注册协议》</a></label>
+
+                    <label id="forCheckBox" class="checkBoxLabel "></label>
+                   <!--  <input type="checkbox" id="isaccept"  name="accept"/> -->
+                    <label id="checkBoxLabel1">已阅读并同意<a class="agree_link" href="http://uc.oppomobile.com/usercenter/document/340/register_simple.html" target="_blank">《OPPO帐号注册协议》</a></label>
                 </div>
                 <div class="clear"></div>
-                <input type="hidden" id="msg1" value="" />
-                <input type="hidden" id="msg2" value="" />
-                
             </div>
             <div class="error_tip" id="info_accept"></div>
-           
+
             <input type="submit" class="button login_button" id="smsBtn" value="立即注册" style="margin-top:22px" />
-            <br/>
-
-
-    </div>
+            <div class="error_tip1" id="info_sms_form"></div>
+            <input type="hidden" id="errorCode" value=""/>
+            <input type="hidden" id="errorMsg" value=""/>
+            <input type="hidden" id="source" name="source"   value=""/>
+            <input type="hidden" id="type" name="type" value="1" />
+            <input type="hidden" id="style" name="style" value="2" />
+        </form>
     </div>
     <div class="footer_info">
          <p>© 2005 - 2017 东莞市永盛通信科技有限公司 版权所有 粤ICP备08130115号-1</p>
      </div>
 </div>
-
-
 
 <script src="__JS__jquery-1.9.1.min.js"></script>
 <!--  协议复选框  -->
@@ -126,7 +125,6 @@
         $('#users').html("");
         $('#psd').html("");
         var username = $('#username').val();
-       
         if (username.length != 0 ){
             $.ajax({
                 url: '/user/ajax/register',
@@ -285,7 +283,5 @@
         */
     });
 </script>
-
-
 </body>
 </html>

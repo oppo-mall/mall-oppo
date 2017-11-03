@@ -7,19 +7,21 @@ use app\index\model\Groom;
 use app\index\model\Adv;
 use app\index\model\Comment;
 use app\index\model\Shopcar;
+
 use app\index\model\Commodity;
 use app\index\model\Comtoattr;
 use app\index\model\Protocom;
 use app\index\model\Indent;
 use app\index\model\Ingoods;
 use app\index\model\Shopaddr;
+
 use think\Request;
 use think\Session;
 class Shop extends Controller
 {
 	public function _initialize()
 	{
-		
+
 		parent::_initialize();
 		$this->product = new ProductModel();
 		$this->grooms = new Groom();
@@ -44,20 +46,17 @@ class Shop extends Controller
 		$this->assign('user', $user);
 		//查广告图
 		$adv = $this->adv->selBigger();
-		//dump($adv);
 		$this->assign('adv' , $adv);
 		//所有手机
 		$all = $this->product->selAll();
-		//dump($all);
 		$this->assign('all',$all);
-		//手机配件
-		/*$parts = $this->product->selParts();
-		$this->assign('parts', $parts);*/
+		//手机配件 
 		//遍历购物车
 		 $car = $this->shopcar->selCar($uid)->toArray();
 		 //统计购物车数量
 		 $count = count($car);
 		  $this->assign('count', $count);
+
 		//查推荐机型
 		$groom = $this->grooms->selGroom();
 		
@@ -68,6 +67,7 @@ class Shop extends Controller
 
 	public function details()
 	{
+
 		
 		if (Session::has('uid')) {
 			$uid = Session::get('uid');
@@ -296,7 +296,6 @@ class Shop extends Controller
 
 	public function payfor()
 	{
-		
 		 $uid = Session::get('uid');
 		 $pid = input('pid');
 		 $this->assign('pid',$pid);
@@ -339,6 +338,3 @@ class Shop extends Controller
 		Shopcar::destroy($data['id']);
 	}
 }
-
- 
-
