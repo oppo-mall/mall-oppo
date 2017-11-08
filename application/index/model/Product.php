@@ -23,9 +23,15 @@ class Product extends Model
 	public function selAll()
 	{
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return Db::view('product','pid,pname,series,description')
 				->view('img',['pid','path_url','alt','title'],'product.pid=img.pid')
 				->where('undercarriage',0)
+=======
+		return Db::view('product','pid,pname,series,description,price,old_price')
+				->view('img',['pid','path_url','alt','title'],'product.pid=img.pid')
+				->where('undercarriage',2)
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 =======
 		return Db::view('product','pid,pname,series,description,price,old_price')
 				->view('img',['pid','path_url','alt','title'],'product.pid=img.pid')
@@ -43,6 +49,7 @@ class Product extends Model
 				->select();
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 	//商品页上部分左图
 	public function selSp($pid,$cid)
@@ -58,6 +65,8 @@ class Product extends Model
 	}
 	
 =======
+=======
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 	//商品页信息【网络，颜色，容量
 	public function selBuys($id)
 	{
@@ -99,6 +108,9 @@ class Product extends Model
 				->select();
 
 	}
+<<<<<<< HEAD
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
+=======
 >>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 	//商品页名称
 	public function selDe($id)
@@ -112,6 +124,7 @@ class Product extends Model
 	}
 	//商品页商品介绍超大图
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public function selBig($pid)
 	{
         return Db::view('product','pid')
@@ -119,17 +132,23 @@ class Product extends Model
 				->where('pid',$pid)
 				->where('tid',1)
 =======
+=======
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 	public function selLarge($id)
 	{
         return Db::view('product','pid')
 				->view('imgd',['pid','path_url'],'product.pid=imgd.pid')
 				->where('pid',$id)
 				->where('tid',3)
+<<<<<<< HEAD
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
+=======
 >>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 				->select();
 
 	}
 	//商品页商品参数超大图
+<<<<<<< HEAD
 <<<<<<< HEAD
 	public function selParam($pid)
 	{
@@ -138,19 +157,28 @@ class Product extends Model
 				->where('pid',$pid)
 				->where('tid',2)
 =======
+=======
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 	public function selParam($id)
 	{
         return Db::view('product','pid')
 				->view('imgd',['pid','path_url'],'product.pid=imgd.pid')
 				->where('pid',$id)
 				->where('tid',4)
+<<<<<<< HEAD
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
+=======
 >>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 				->select();
 
 	}
 	//一级评论
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public function selComment($pid)
+=======
+	public function selComment($id)
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 =======
 	public function selComment($id)
 >>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
@@ -159,21 +187,31 @@ class Product extends Model
 				->view('comment',['pid','uid','content','create_time','id','is_comment'],'product.pid=comment.pid')
 				->view('user',['uid','icon'],'user.uid=comment.uid')
 <<<<<<< HEAD
+<<<<<<< HEAD
 				->where('pid',$pid)
 				->where('bid',0)
 				->order('create_time desc')
 =======
+=======
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 				->where('pid',$id)
 				->where('bid',0)
 				->order('create_time desc')
 				//->paginate(5);
+<<<<<<< HEAD
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
+=======
 >>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 				->select();
 
 	}
 	//分页
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public function selPage($pid)
+=======
+	public function selPage($id)
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 =======
 	public function selPage($id)
 >>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
@@ -182,7 +220,11 @@ class Product extends Model
 				->view('comment',['pid','uid','content','create_time','id','is_comment'],'product.pid=comment.pid')
 				->view('user',['uid','icon'],'user.uid=comment.uid')
 <<<<<<< HEAD
+<<<<<<< HEAD
 				->where('pid',$pid)
+=======
+				->where('pid',$id)
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 =======
 				->where('pid',$id)
 >>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
@@ -192,9 +234,4 @@ class Product extends Model
 				
 
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
-	
 }

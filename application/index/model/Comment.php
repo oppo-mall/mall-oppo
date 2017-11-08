@@ -2,8 +2,8 @@
 namespace app\index\model;
 use think\Model;
 use think\Db;
-
 use traits\model\SoftDelete;
+
 class Comment extends Model
 {
 	use SoftDelete;
@@ -28,6 +28,7 @@ class Comment extends Model
 	//统计总共评论
 	public function selCount()
 	{
+
 		 return $this->count('id');
 	}
 	//是否已经评论,当前用户的评论后自动生成的id

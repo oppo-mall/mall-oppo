@@ -3,6 +3,7 @@ namespace app\index\model;
 use think\Model;
 use think\Db;
 <<<<<<< HEAD
+<<<<<<< HEAD
 use traits\model\SoftDelete;
 
 class Shopcar extends Model
@@ -28,6 +29,8 @@ class Shopcar extends Model
 	{
 		return $this->where('id','in',$str)->select();
 =======
+=======
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 
 
 class Shopcar extends Model
@@ -40,6 +43,9 @@ class Shopcar extends Model
 				->where('uid',$uid)
 				->select();
 
+<<<<<<< HEAD
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
+=======
 >>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 	}
 }

@@ -79,7 +79,6 @@ class Member extends Controller
             echo $file->getError();
         }              
     }
-
     public function changepassword()
     {
 		$this->view->engine->layout(false);
@@ -128,5 +127,4 @@ class Member extends Controller
     	$uid = Request::instance()->param();
     	$this->user->readydel($uid['uid']);
     }
-
 }

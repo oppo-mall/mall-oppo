@@ -27,6 +27,7 @@
 
         <div class="register_title">注册OPPO帐号</div>
         <!--主体注册框-->
+<<<<<<< HEAD
         
        <!--  <form   id="sms_form" action="" method="post" > 
             <button>12</button> -->
@@ -54,11 +55,27 @@
                 <input type="password" name='pwd'  id="pwd"  autocomplete="off"  class="pwd" placeholder="请输入帐号密码"   />
                 <span id="psd" style="color: red"></span>
                 <span id="surePsd" style="color: green;"></span>
+=======
+        <form  class="register_form" id="sms_form" action="/index/index/doreg" method="post" >
+             <div class="input_area">
+                <input type="text"  id="username" name="username" autocomplete="off"  class="username" placeholder="请输入手机号码/邮箱/用户名"/>
+                <span id="users"></span>
+                <br/>
+                <input type="text"  id="yzm"  class="username " style="display: none" placeholder="请输入短信验证码" />
+            </div>
+            <div class="error_tip" id="info_username"></div>
+            <div class="input_area">
+                <input type="password" name='pwd'  id="pwd"  autocomplete="off"  class="pwd" placeholder="请输入帐号密码" />
+                <span id="psd"></span>
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
             </div>
             
             <div class="field">
                 <div class="fl">
+<<<<<<< HEAD
 
+=======
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
                     <label id="forCheckBox" class="checkBoxLabel "></label>
                    <!--  <input type="checkbox" id="isaccept"  name="accept"/> -->
                     <label id="checkBoxLabel1">已阅读并同意<a class="agree_link" href="http://uc.oppomobile.com/usercenter/document/340/register_simple.html" target="_blank">《OPPO帐号注册协议》</a></label>
@@ -81,6 +98,7 @@
      </div>
 </div>
 
+<<<<<<< HEAD
 <script src="__JS__jquery-1.9.1.min.js"></script>
 <!--  协议复选框  -->
 <script type="text/javascript">
@@ -121,22 +139,57 @@
 
 
 /*用户名验证*/
+=======
+
+<input type="hidden" value="/captcha" id="captchaUrl"/>
+<input type="hidden" value='' id="getCaptchaJs"/>
+<input type="hidden" value='' id="captchaResult"/>
+<script src="__JS__jquery-1.9.1.min.js"></script>
+<!-- <script src="__JS__register.js?r=20170503" ></script> -->
+
+<script>
+    var yzm = document.getElementById('yzm');
+    var phoneReg = /^1[3|4|5|8|7][0-9]\d{4,8}$/;
+   /* var emailReg = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
+    var userReg = //;*/
+   /* var check = document.getElementById('forCheckBox');
+    $('#forCheckBox').click(function () {
+         $('#forCheckBox').className = 'checkBoxLabel choosed'
+    })
+*/
+
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
     $('#username').blur(function() {
         $('#users').html("");
         $('#psd').html("");
         var username = $('#username').val();
+<<<<<<< HEAD
         if (username.length != 0 ){
             $.ajax({
                 url: '/user/ajax/register',
                 type: 'POST',
                 dataType: 'json',
                 async : true,
+=======
+        
+        
+        /*if (username.length > 15) {
+            $('#users').html('用户名过长')
+        };*/
+        if (username.length !=0 ){
+            $.ajax({
+                url: '/index/ajax/register',
+                type: 'POST',
+                dataType: 'json',
+                async : false,
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
                 data: {param:username},
                 success:success
             });
             function success(data){
                 if (data.status == 0) {
                     $('#users').html('用户名已被注册');
+<<<<<<< HEAD
                      $('#sure').html('');
                 } else if (data.status == 1) {
                     if (username.length < 3) {
@@ -281,6 +334,12 @@
        $('#pwd').html('');
             
         */
+=======
+                }
+                
+            }
+        }
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
     });
 </script>
 </body>

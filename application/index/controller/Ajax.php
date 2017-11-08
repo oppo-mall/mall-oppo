@@ -8,7 +8,6 @@ use app\index\model\Commodity;
 use app\index\model\Attr;
 use app\index\model\Shopcar;
 use app\index\model\User;
-
 /**
 * 
 */
@@ -26,7 +25,6 @@ class ajax extends Controller
 		$this->attr = new Attr();
 		$this->shop = new Shopcar($_POST);
 		$this->user = new User();
-		
 	}	
 	
 	function register()
@@ -40,7 +38,6 @@ class ajax extends Controller
 			echo json_encode(['status'=>'0']);
 		}
 	}
-
 	//一级评论
 	function comments()
 	{
@@ -65,8 +62,6 @@ class ajax extends Controller
 		} 
 		
 	}
-
-
 	function color() 
 	{
 		$aid= Request::instance()->param()['aid'];
@@ -127,6 +122,3 @@ class ajax extends Controller
 
 	}
 }
-
-
-

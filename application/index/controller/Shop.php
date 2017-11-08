@@ -7,7 +7,6 @@ use app\index\model\Groom;
 use app\index\model\Adv;
 use app\index\model\Comment;
 use app\index\model\Shopcar;
-
 use app\index\model\Commodity;
 use app\index\model\Comtoattr;
 use app\index\model\Protocom;
@@ -68,7 +67,6 @@ class Shop extends Controller
 	public function details()
 	{
 
-		
 		if (Session::has('uid')) {
 			$uid = Session::get('uid');
 			$user = Session::get('username');
@@ -185,13 +183,10 @@ class Shop extends Controller
 		$groom = $this->grooms->selGroom();
 		$this->assign('groom', $groom);
 		return $this->fetch();
-
-
 	}
 
 	public function car()
 	{
-		
 		 $uid = Session::get('uid');
 		 $pid = input('pid');
 		 $this->assign('pid',$pid);
@@ -338,3 +333,4 @@ class Shop extends Controller
 		Shopcar::destroy($data['id']);
 	}
 }
+

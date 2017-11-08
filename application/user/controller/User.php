@@ -18,11 +18,15 @@ class User extends Controller
 
 	public function reg()
 	{
+<<<<<<< HEAD
 
+=======
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 		return $this->fetch();
 	}
 	public function doreg()
 	{
+<<<<<<< HEAD
 
 		$data = Request::instance()->param();
 		
@@ -52,19 +56,38 @@ class User extends Controller
 	public function log()
 	{
 
+=======
+		
+		
+	}
+	public function log()
+	{
+				//防止get注入
+		if (Request::instance()->isGet()){
+			return $this->fetch();
+		}
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 		return $this->fetch();
 	}
 
 		//登录
 	public function dolog()
 	{
+<<<<<<< HEAD
 		if (Request::instance()->isGet()){
 		return $this->fetch('log');
 	}
+=======
+		//防止get注入
+		if (Request::instance()->isGet()){
+			return $this->fetch('log');
+		}
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 		//限定传入类型
 		if (Request::instance()->isPost()){
 			$post = Request::instance()->param(); 
 			$name = $post['username'];
+<<<<<<< HEAD
 
 			$password = md5($post['password']);
 			//dump($password);
@@ -73,6 +96,13 @@ class User extends Controller
 			//dump($userinfo);
 			if (($userinfo['password'] == $password) && $userinfo['is_log'] == 0) {
 
+=======
+			$password = $post['password'];
+			//查询用户信息
+			$userinfo = $this->user->checkAll($name);
+
+			if (($userinfo['password'] !== $password) && $userinfo['is_log'] == 0) {
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 				$this->user->upip($userinfo['uid']);
 				Session::set('username',$name);
 				if ($userinfo['udertype'] == '1') {
@@ -84,6 +114,7 @@ class User extends Controller
 				// Session::set('gold',$userinfo['gold']);
 				Session::set('icon',$userinfo['icon']);
 				Session::set('nickname',$userinfo['nickname']);
+<<<<<<< HEAD
 
 				Session::set('udertype',$userinfo['udertype']);
 				if ($userinfo['udertype'] == 1) {
@@ -99,6 +130,21 @@ class User extends Controller
 
 		}   
 	}
+=======
+				if ($userinfo['udertype'] == 1) {
+					$this->success('管理员登录成功','Index/index');
+				} elseif ($userinfo['udertype'] == 2) {
+					$this->success('卖家登录成功','Index/index');
+				}
+				$this->success('登录成功','Index/index');
+			} else {
+				$this->error('登录失败');
+			}
+
+		}
+	}
+
+>>>>>>> b7362c8cb898975fb7eed8292d4d5b6ce8aabba2
 	public function logout()
 	{
 		Session::clear();

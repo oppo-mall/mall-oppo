@@ -21,6 +21,7 @@ class Adv extends Model
 	//中等广告图
 	public function selMid()
 	{
+
 		return $this->where('bid',3)->field('*')->select();
 	}
 
